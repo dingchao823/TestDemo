@@ -1,0 +1,120 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.hujiang.android-aspectjx'
+
+android {
+    compileSdkVersion rootProject.ext.targetSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId "com.suiyi.testdemo"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [
+                environment : "prd",
+        ]
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ AROUTER_MODULE_NAME : project.getName(), AROUTER_GENERATE_DOC: "enable"]
+                includeCompileClasspath = true
+            }
+        }
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug{
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+    kapt {
+        arguments {
+            arg("AROUTER_MODULE_NAME", project.getName())
+            arg("AROUTER_GENERATE_DOC", "enable")
+        }
+    }
+
+    kotlin{
+        experimental {
+            coroutines 'enable'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //noinspection GradleCompatible
+    implementation "com.android.support:recyclerview-v7:28.0.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.androidkun:XTabLayout:1.1.4'
+    implementation 'org.xutils:xutils:3.5.0'
+
+    /** ARouter **/
+    implementation 'com.alibaba:arouter-api:1.5.0'
+    kapt 'com.alibaba:arouter-compiler:1.2.2'
+
+    /** kotlin 协程 **/
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
+
+    /** 支持淘宝二楼的上拉下拉刷新第三方库，不好用，不是淘宝那种效果 **/
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0'
+
+    /** flutter 框架 **/
+    implementation(name : 'flutter_debug-6.0', ext : 'aar')
+
+    /** vlayout **/
+    compile ('com.alibaba.android:vlayout:1.2.8@aar') {
+        transitive = true
+    }
+
+    /** 真正支持淘宝二楼 **/
+    implementation 'me.dkzwm.widget.srl:core:1.6.6.8'
+    implementation 'me.dkzwm.widget.srl:ext-util:1.6.6.8'
+    implementation 'me.dkzwm.widget.srl:ext-material:1.6.6.8'
+    implementation 'me.dkzwm.widget.srl:ext-horizontal:1.6.6.8'
+    implementation 'me.dkzwm.widget.srl:ext-classics:1.6.6.8'
+    implementation 'me.dkzwm.widget.srl:ext-two-level:1.6.6.8'
+
+    /** Lottie 播放框架 **/
+    implementation 'com.airbnb.android:lottie:2.7.0'
+
+    /** SVGA 播放框架 YY 开源 **/
+    implementation 'com.github.yyued:SVGAPlayer-Android:2.4.7'
+
+    /** JetPack 组件 **/
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
+
+    /** retrofit **/
+    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
+
+    /** 基础框架 **/
+    implementation project(':base')
+}
+repositories {
+    mavenCentral()
+}
