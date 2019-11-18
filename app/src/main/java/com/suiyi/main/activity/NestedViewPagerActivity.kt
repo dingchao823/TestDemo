@@ -14,6 +14,7 @@ import com.suiyi.main.adapter.SimpleOneScrollAdapter
 import com.suiyi.main.adapter.SimpleViewPagerAdapter
 import com.suiyi.main.constants.Path.Companion.NESTED_VIEW_PAGER_ACTIVITY
 import kotlinx.android.synthetic.main.fragment_nested_view_pager_activity.*
+import org.greenrobot.eventbus.EventBus
 
 /**
  * RecyclerView + ViewPager + RecyclerView 嵌套滑动冲突问题解决方案
@@ -25,6 +26,11 @@ class NestedViewPagerActivity : AppCompatActivity(){
 
     private val A = ViewPagerFragmentA()
     private val B = ViewPagerFragmentB()
+
+    override fun onStart() {
+        super.onStart()
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,5 +48,10 @@ class NestedViewPagerActivity : AppCompatActivity(){
                 else -> A
             }
         }).commitAllowingStateLoss()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        EventBus.getDefault().unregister(this)
     }
 }

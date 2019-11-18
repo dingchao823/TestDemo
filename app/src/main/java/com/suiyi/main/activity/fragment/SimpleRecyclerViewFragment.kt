@@ -17,15 +17,24 @@ import com.suiyi.main.adapter.SimpleTextAdapter
 
 class SimpleRecyclerViewFragment : Fragment(){
 
+    var index = -1
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        arguments?.get("index")?.let {
+            index = it as Int
+        }
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_nested_view_pager, null)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_nested)
-
         val virtualLayoutManager = VirtualLayoutManager(context!!)
         val adapter = DelegateAdapter(virtualLayoutManager)
         recyclerView.layoutManager = VirtualLayoutManager(context!!)
         recyclerView.adapter = adapter
-        adapter.addAdapter(SimpleTextAdapter())
+        adapter.addAdapter(SimpleTextAdapter(index))
 
         Log.e("dc", "【SimpleRecyclerViewFragment ${hashCode()}】 create view")
 

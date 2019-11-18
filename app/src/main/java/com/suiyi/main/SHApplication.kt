@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.util.Log
 import com.alibaba.android.arouter.launcher.ARouter
+//import com.didichuxing.doraemonkit.DoraemonKit
 
 class SHApplication : Application() {
 
@@ -22,7 +23,7 @@ class SHApplication : Application() {
         val info = packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA)
         domainUrl = info.metaData?.getString("environment")
 
-        Log.e("dc", "domainUrl = $domainUrl")
+//        DoraemonKit.install(this)
     }
 
     companion object {

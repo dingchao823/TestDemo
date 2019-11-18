@@ -18,11 +18,10 @@ import com.suiyi.main.utils.DimenUtils
  *
  * @author
  */
-class SimpleTextAdapter() :
-        BaseDelegateAdapter<SimpleTextAdapter.ViewHolder, String>(){
+class SimpleTextAdapter(val index : Int = 0) : BaseDelegateAdapter<SimpleTextAdapter.ViewHolder, String>(){
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-        p0.textView.text = "当前位置 : $p1"
+        p0.textView.text = "当前位置 $index --- $p1"
     }
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
@@ -46,7 +45,7 @@ class SimpleTextAdapter() :
     }
 
     override fun getItemCount(): Int {
-        return 10
+        return 20
     }
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){

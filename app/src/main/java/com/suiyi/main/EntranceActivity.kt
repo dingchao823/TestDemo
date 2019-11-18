@@ -38,6 +38,7 @@ class EntranceActivity : Activity(){
         adapter.dataSource.add(RecyclerBean("JetPack组件", Path.JET_PACK_ACTIVITY))
         adapter.dataSource.add(RecyclerBean("LayoutInflater疑问", Path.CONTEXT_TEST_ACTIVITY))
         adapter.dataSource.add(RecyclerBean("RecyclerView 局部刷新实践", Path.RECYCLER_VIEW_DIFF_UTILS))
+        adapter.dataSource.add(RecyclerBean("WebP加载", Path.WEBP_ACTIVITY))
     }
 
 }

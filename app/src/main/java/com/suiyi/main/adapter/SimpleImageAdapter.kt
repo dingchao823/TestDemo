@@ -45,7 +45,7 @@ class SimpleImageAdapter(var isSticky : Boolean = false, var resId : Int = R.mip
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val singleImage = ImageView(context)
-        singleImage.layoutParams = RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DimenUtils.dipTopx( context, 100f))
+        singleImage.layoutParams = RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DimenUtils.dipTopx( context, 300f))
         singleImage.scaleType = ImageView.ScaleType.FIT_XY
         singleImage.setImageResource(resId)
         singleImage.setBackgroundResource(R.color.colorPrimary)

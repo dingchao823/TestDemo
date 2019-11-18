@@ -17,6 +17,7 @@ class Path{
         const val JET_PACK_ACTIVITY = "/app/main/JetPackActivity"
         const val CONTEXT_TEST_ACTIVITY = "/app/main/ContextTestActivity"
         const val RECYCLER_VIEW_DIFF_UTILS = "/app/main/RecyclerDiffActivity"
+        const val WEBP_ACTIVITY = "/app/main/WebPActivity"
 
     }
 

@@ -3,14 +3,9 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.suiyi.main.widget.NestedInnerRecyclerView
+    <com.gem.tastyfood.widget.NestedInnerRecyclerView
         android:id="@+id/recycler_nested"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-<!--    <android.support.v7.widget.RecyclerView-->
-<!--        android:id="@+id/recycler_nested"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
 
 </LinearLayout>

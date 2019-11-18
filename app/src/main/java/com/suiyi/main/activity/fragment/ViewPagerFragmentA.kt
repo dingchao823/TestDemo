@@ -1,6 +1,6 @@
 package com.suiyi.main.activity.fragment
 
-import android.content.Context
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,24 +10,37 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.alibaba.android.vlayout.DelegateAdapter
 import com.alibaba.android.vlayout.VirtualLayoutManager
+import com.gem.tastyfood.widget.NestedOuterRecyclerView
 import com.suiyi.main.R
 import com.suiyi.main.activity.NestedViewPagerActivity
 import com.suiyi.main.adapter.SimpleDividerAdapter
 import com.suiyi.main.adapter.SimpleImageAdapter
-import com.suiyi.main.adapter.SimpleOneScrollAdapter
 import com.suiyi.main.adapter.SimpleViewPagerAdapter
-import com.suiyi.main.widget.NestedOuterRecyclerView
+import com.suiyi.main.event.FlingEvent
+import com.suiyi.main.utils.ScreenUtil
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
+
 
 /**
  * 主 Fragment
  */
 class ViewPagerFragmentA : Fragment(){
 
+    private lateinit var recyclerNested : NestedOuterRecyclerView
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = LayoutInflater.from(activity).inflate(R.layout.fragment_nested_view_pager_activity, null)
+        val view = LayoutInflater.from(activity!!).inflate(R.layout.fragment_nested_view_pager_activity, null)
         val virtualLayoutManager = VirtualLayoutManager(activity!!)
         val adapter = DelegateAdapter(virtualLayoutManager)
-        val recycler_nested = view.findViewById<NestedOuterRecyclerView>(R.id.recycler_nested)
+        recyclerNested = view.findViewById(R.id.recycler_nested)
+        recyclerNested.viewPagerBottomHeight = ScreenUtil.getRealScreenHeight(activity!!)
         view.findViewById<Button>(R.id.button).setOnClickListener{
             activity?.let {
                 if (it is NestedViewPagerActivity){
@@ -35,17 +48,40 @@ class ViewPagerFragmentA : Fragment(){
                 }
             }
         }
-        recycler_nested.layoutManager = VirtualLayoutManager(activity!!)
-        recycler_nested.adapter = adapter
+        view.findViewById<Button>(R.id.button_scroll).setOnClickListener{
+            activity?.let {
+                if (it is NestedViewPagerActivity){
+                    recyclerNested.scrollBy(0, -200)
+                    recyclerNested.scrollBy(0, -200)
+                    recyclerNested.scrollBy(0, -200)
+                    recyclerNested.scrollBy(0, -200)
+                    recyclerNested.scrollBy(0, -200)
+                }
+            }
+        }
+        recyclerNested.layoutManager = VirtualLayoutManager(activity!!)
+        recyclerNested.adapter = adapter
         for (index in 1..20){
             adapter.addAdapter(SimpleImageAdapter())
             adapter.addAdapter(SimpleDividerAdapter(10))
         }
         adapter.addAdapter(SimpleDividerAdapter(10))
-        adapter.addAdapter(SimpleViewPagerAdapter(activity!!.supportFragmentManager))
+        adapter.addAdapter(SimpleViewPagerAdapter(activity!!.supportFragmentManager, activity as Activity))
 
         Log.e("dc", "【ViewPagerFragmentA】 create view")
         return view
+    }
+
+    override fun onStop() {
+        super.onStop()
+        EventBus.getDefault().unregister(this)
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onFlingEvent(event: FlingEvent?) {
+        event?.let {
+            recyclerNested.fling(it.flingX, it.flingY)
+        }
     }
 
     override fun onDetach() {

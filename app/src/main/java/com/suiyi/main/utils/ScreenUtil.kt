@@ -1,6 +1,8 @@
 package com.suiyi.main.utils
 
+import android.app.Activity
 import android.content.Context
+import android.util.DisplayMetrics
 import android.view.WindowManager
 import com.suiyi.main.SHApplication
 
@@ -28,5 +30,11 @@ object ScreenUtil {
             height = SHApplication.instance().resources.getDimensionPixelSize(resourceId)
         }
         return height
+    }
+
+    fun getRealScreenHeight(activity: Activity): Int {
+        val outMetrics = DisplayMetrics()
+        activity.windowManager.defaultDisplay.getRealMetrics(outMetrics)
+        return outMetrics.heightPixels
     }
 }

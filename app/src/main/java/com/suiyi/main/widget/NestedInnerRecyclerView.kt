@@ -1,60 +1,110 @@
-package com.suiyi.main.widget
+package com.gem.tastyfood.widget
 
 import android.content.Context
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
+import android.view.VelocityTracker
 import android.view.View
+import android.view.ViewConfiguration
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.abs
 
+/**
+ * 处理嵌套滑动
+ *
+ * @author 0004640
+ */
 class NestedInnerRecyclerView : RecyclerView {
 
     private var downX : Float = 0f
     private var downY : Float = 0f
+    /** viewPager 左右滑动阈值 **/
+    private val MOVE_RANGE = 100
+    private var dx : Float? = 0f
+    private var dy : Float? = 0f
+    private var orientation: String? = ""
+    private var isDebug = true
+    private var mVelocityTracker: VelocityTracker? = null
+    private var mMaxFlingVelocity : Int? = null
+    private val vc: ViewConfiguration? = ViewConfiguration.get(context)
 
-    constructor(context: Context?) : super(context!!) {}
+    constructor(context: Context) : super(context){}
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
+    constructor(context: Context, attrs: AttributeSet?, defStyle: Int) : super(context, attrs, defStyle)
 
-    constructor(context: Context?, attrs: AttributeSet?) : super(context!!, attrs) {}
+    init {
+        mMaxFlingVelocity = vc?.scaledMaximumFlingVelocity
+    }
 
-    constructor(context: Context?, attrs: AttributeSet?, defStyle: Int) : super(context!!, attrs, defStyle) {}
+    override fun canScrollHorizontally(direction: Int): Boolean {
+        return false
+    }
+
+    override fun onInterceptTouchEvent(e: MotionEvent?): Boolean {
+        if (mVelocityTracker == null){
+            mVelocityTracker = VelocityTracker.obtain()
+        }
+        mVelocityTracker?.addMovement(e)
+        when(e?.action){
+            MotionEvent.ACTION_UP -> {
+                mVelocityTracker?.clear()
+            }
+        }
+        return super.onInterceptTouchEvent(e)
+    }
 
     override fun onTouchEvent(e: MotionEvent): Boolean {
-        val x = e.x
-        val y = e.y
-        when (e.action) {
+        if (mVelocityTracker == null){
+            mVelocityTracker = VelocityTracker.obtain()
+        }
+        mVelocityTracker?.addMovement(e)
+        val vtev: MotionEvent? = MotionEvent.obtain(e)
+        var eventAddedToVelocityTracker = false
+        when(e.action){
             MotionEvent.ACTION_DOWN -> {
-                downX = x
-                downY = y
-                // 必须加上这个，让 RecyclerView 也要处理滑动冲突才行
+                downX = e.x
+                downY = e.y
+                // 必须加上这个，不然外部的 OutRecycler 拦截，因为都是竖直滑动
                 parent.requestDisallowInterceptTouchEvent(true)
-//                Log.e("dc", "inner ACTION_DOWN 》》》")
             }
             MotionEvent.ACTION_MOVE -> {
-                val dx: Float? = x.minus(downX)
-                val dy: Float? = y.minus(downY)
+                dx = e.x.minus(downX)
+                dy = e.y.minus(downY)
                 //通过距离差判断方向
-                val orientation = getOrientation(dx ?: 0f, dy ?: 0f)
+                orientation = getOrientation(dx ?: 0f, dy ?: 0f)
                 when (orientation) {
                     "r", "l" -> {
-                        // 要求左右滑动很大才能触发父类的左右滑动
-                        dx?.let {
-                            if (abs(dx) > 100){
+                        dx?.let{
+                            if (abs(it) >= MOVE_RANGE) {
+                                // 左右滑动超出阈值，ViewPager 处理左右滑动事件
+                                if(isDebug) {
+                                    Log.e("dc", "inner -> 自己处理左右")
+                                }
                                 parent.requestDisallowInterceptTouchEvent(false)
-//                                Log.e("dc", "inner ACTION_MOVE 》》》父类处理")
                                 return false
-                            }else{
-                                parent.requestDisallowInterceptTouchEvent(true)
                             }
                         }
                     }
                     else -> {
+                        // 上下方向，ViewPager 不处理
+                        if(isDebug) {
+                            Log.e("dc", "inner -> 交由【父类】处理上下")
+                        }
                         parent.requestDisallowInterceptTouchEvent(true)
-//                        Log.e("dc", "inner ACTION_MOVE 》》》子类处理")
                     }
                 }
             }
+            MotionEvent.ACTION_UP -> {
+
+            }
         }
+
+        if (!eventAddedToVelocityTracker) {
+            mVelocityTracker!!.addMovement(vtev)
+        }
+        vtev?.recycle()
+
         return super.onTouchEvent(e)
     }
 
@@ -69,27 +119,39 @@ class NestedInnerRecyclerView : RecyclerView {
     }
 
     override fun dispatchNestedScroll(dxConsumed: Int, dyConsumed: Int, dxUnconsumed: Int, dyUnconsumed: Int, offsetInWindow: IntArray?): Boolean {
-//        Log.e("dc", "Inner --> dispatchNestedScroll1[dxConsumed=$dxConsumed][dyConsumed=$dyConsumed][dxUnconsumed=$dxUnconsumed][dyUnconsumed=$dyUnconsumed][offsetInWindow=[$offsetInWindow]]")
+        if(isDebug) {
+            Log.e("dc", "Inner --> dispatchNestedScroll1[dxConsumed=$dxConsumed][dyConsumed=$dyConsumed][dxUnconsumed=$dxUnconsumed]" +
+                    "[dyUnconsumed=$dyUnconsumed][offsetInWindow=[$offsetInWindow]]")
+        }
         return super.dispatchNestedScroll(dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed, offsetInWindow)
     }
 
     override fun dispatchNestedScroll(dxConsumed: Int, dyConsumed: Int, dxUnconsumed: Int, dyUnconsumed: Int, offsetInWindow: IntArray?, type: Int): Boolean {
-//        Log.e("dc", "Inner --> dispatchNestedScroll2[dxConsumed=$dxConsumed][dyConsumed=$dyConsumed][dxUnconsumed=$dxUnconsumed][dyUnconsumed=$dyUnconsumed][offsetInWindow=[$offsetInWindow]][type=$type]")
+        if(isDebug) {
+            Log.e("dc", "Inner --> dispatchNestedScroll2[dxConsumed=$dxConsumed][dyConsumed=$dyConsumed]" +
+                    "[dxUnconsumed=$dxUnconsumed][dyUnconsumed=$dyUnconsumed][offsetInWindow=[$offsetInWindow]][type=$type]")
+        }
         return super.dispatchNestedScroll(dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed, offsetInWindow, type)
     }
 
     override fun dispatchNestedPreFling(velocityX: Float, velocityY: Float): Boolean {
-//        Log.e("dc", "Inner --> dispatchNestedPreFling[velocityX=$velocityX][velocityY=$velocityY]")
+        if(isDebug) {
+            Log.e("dc", "Inner --> dispatchNestedPreFling[velocityX=$velocityX][velocityY=$velocityY]")
+        }
         return super.dispatchNestedPreFling(velocityX, velocityY)
     }
 
     override fun onStartNestedScroll(child: View?, target: View?, nestedScrollAxes: Int): Boolean {
-//        Log.e("dc", "Inner --> onStartNestedScroll[nestedScrollAxes=$nestedScrollAxes]")
+        if (isDebug) {
+            Log.e("dc", "Inner --> onStartNestedScroll[nestedScrollAxes=$nestedScrollAxes]")
+        }
         return super.onStartNestedScroll(child, target, nestedScrollAxes)
     }
 
     override fun onStopNestedScroll(child: View?) {
-//        Log.e("dc", "Inner --> onStopNestedScroll")
+        if (isDebug) {
+            Log.e("dc", "Inner --> onStopNestedScroll")
+        }
         super.onStopNestedScroll(child)
     }
 }
