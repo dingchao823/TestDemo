@@ -39,6 +39,7 @@ class EntranceActivity : Activity(){
         adapter.dataSource.add(RecyclerBean("LayoutInflater疑问", Path.CONTEXT_TEST_ACTIVITY))
         adapter.dataSource.add(RecyclerBean("RecyclerView 局部刷新实践", Path.RECYCLER_VIEW_DIFF_UTILS))
         adapter.dataSource.add(RecyclerBean("WebP加载", Path.WEBP_ACTIVITY))
+        adapter.dataSource.add(RecyclerBean("vLayout 瀑布流闪烁错乱bug", Path.STAGGER_BUG_ACTIVITY))
     }
 
 }

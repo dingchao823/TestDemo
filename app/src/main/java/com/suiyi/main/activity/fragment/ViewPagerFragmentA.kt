@@ -17,6 +17,7 @@ import com.suiyi.main.adapter.SimpleDividerAdapter
 import com.suiyi.main.adapter.SimpleImageAdapter
 import com.suiyi.main.adapter.SimpleViewPagerAdapter
 import com.suiyi.main.event.FlingEvent
+import com.suiyi.main.utils.DimenUtils
 import com.suiyi.main.utils.ScreenUtil
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -40,6 +41,7 @@ class ViewPagerFragmentA : Fragment(){
         val virtualLayoutManager = VirtualLayoutManager(activity!!)
         val adapter = DelegateAdapter(virtualLayoutManager)
         recyclerNested = view.findViewById(R.id.recycler_nested)
+        recyclerNested.viewPagerStickyHeight = ScreenUtil.getStatusBarHeight() + DimenUtils.dipTopx(50f)
         recyclerNested.viewPagerBottomHeight = ScreenUtil.getRealScreenHeight(activity!!)
         view.findViewById<Button>(R.id.button).setOnClickListener{
             activity?.let {
@@ -61,7 +63,7 @@ class ViewPagerFragmentA : Fragment(){
         }
         recyclerNested.layoutManager = VirtualLayoutManager(activity!!)
         recyclerNested.adapter = adapter
-        for (index in 1..20){
+        for (index in 1..5){
             adapter.addAdapter(SimpleImageAdapter())
             adapter.addAdapter(SimpleDividerAdapter(10))
         }

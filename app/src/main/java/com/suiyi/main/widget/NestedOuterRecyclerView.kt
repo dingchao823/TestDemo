@@ -11,12 +11,15 @@ import androidx.core.view.NestedScrollingParentHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.suiyi.main.utils.DimenUtils
 import com.suiyi.main.utils.ScreenUtil
+import com.suiyi.main.widget.RecyclerTabLayout
 import kotlin.math.abs
 
 /**
  * 处理嵌套滑动，外层
  *
  * @author 0004640
+ *
+ * isLayoutFrozen ：对于 RecyclerTabLayout ，如果吸顶了，如果当前1号不在顶部，没办法下滑
  */
 class NestedOuterRecyclerView : RecyclerView, NestedScrollingParent2 {
 
@@ -24,7 +27,7 @@ class NestedOuterRecyclerView : RecyclerView, NestedScrollingParent2 {
     private var mNestedScrollingTarget: View? = null
     private var mNestedScrollingChildView: View? = null
     /** ViewPager 固定的高度  */
-    var viewPagerStickyHeight = ScreenUtil.getStatusBarHeight() + DimenUtils.dipTopx(50f)
+    var viewPagerStickyHeight = 0
     var viewPagerBottomHeight = -1
     /** 误差范围 **/
     private val offset = 5
@@ -101,10 +104,6 @@ class NestedOuterRecyclerView : RecyclerView, NestedScrollingParent2 {
             Log.e("dc", "Outer --> onStopNestedScroll 》》")
         }
         mNestedScrollingParentHelper.onStopNestedScroll(target, type)
-        // 如果还有没有 fling 的赶紧用掉
-        if (!target.canScrollVertically(-1)){
-
-        }
     }
 
     override fun onNestedScroll(target: View, dxConsumed: Int, dyConsumed: Int, dxUnconsumed: Int, dyUnconsumed: Int, type: Int) {
@@ -115,73 +114,86 @@ class NestedOuterRecyclerView : RecyclerView, NestedScrollingParent2 {
 
     override fun onNestedPreScroll(target: View, dx: Int, dy: Int, consumed: IntArray, type: Int) {
         mNestedScrollingChildView?.let {
-            if (target !is NestedInnerRecyclerView) {
-                return
+            when(target){
+                is NestedInnerRecyclerView -> {
+                    handleInnerRecyclerView(it, dx, dy, consumed, target)
+                }
+                is RecyclerTabLayout -> {
+                    if (isDebug) {
+                        Log.e("dc", "Outer --> onNestedPreScroll 》》处理 TabLayout 滑动【dy=$dy】")
+                    }
+                }
             }
-            it.getLocationOnScreen(childLocation)
-            // 如果是上下
-            if(abs(dx) < abs(dy)){
-                // 如果是向上的
-                if (dy >= 0) {
-                    // ViewPager 当前所处位置没有在顶端，交由父类去滑动
-                    if (childLocation[1] > (viewPagerStickyHeight + offset)) {
+        }
+    }
+
+    private fun handleInnerRecyclerView(it: View, dx: Int, dy: Int, consumed: IntArray, target: View) {
+        it.getLocationOnScreen(childLocation)
+        // 如果是上下
+        if (abs(dx) < abs(dy)) {
+            // 如果是向上的
+            if (dy >= 0) {
+                // ViewPager 当前所处位置没有在顶端，交由父类去滑动
+                if (childLocation[1] > (viewPagerStickyHeight + offset)) {
+                    consumed[0] = 0
+                    consumed[1] = dy
+                    scrollBy(0, dy)
+                    if (isDebug) {
+                        Log.e("dc", "Outer --> onNestedPreScroll 》》消耗向上【dy=$dy】")
+                    }
+                } else {
+                    // 吸顶不允许父类滑动的了，除非子类向下且到头部
+                    isLayoutFrozen = true
+                    if (isDebug) {
+                        Log.e("dc", "Outer --> onNestedPreScroll 》》交由【子类】消耗向上【dy=$dy】")
+                    }
+                }
+            }
+            // 如果是向下的
+            else {
+                if (childLocation[1] > (viewPagerStickyHeight + offset)) {
+                    if (!target.canScrollVertically(-1)) {
+                        // 如果超过了底部，剩下的滑动全由父类完成
+                        if (childLocation[1] >= viewPagerBottomHeight) {
+
+                        }
                         consumed[0] = 0
                         consumed[1] = dy
                         scrollBy(0, dy)
-                        if(isDebug) {
-                            Log.e("dc", "Outer --> onNestedPreScroll 》》消耗向上【dy=$dy】")
+                        if (isDebug) {
+                            Log.e("dc", "Outer --> onNestedPreScroll 》》在固定位置消耗向下【dy=$dy】")
                         }
-                    }else{
-                        if(isDebug) {
-                            Log.e("dc", "Outer --> onNestedPreScroll 》》交由【子类】消耗向上【dy=$dy】")
-                        }
-                    }
-                }
-                // 如果是向下的
-                else {
-                    if (childLocation[1] > (viewPagerStickyHeight + offset)) {
-                        if (!target.canScrollVertically(-1)) {
-                            // 如果超过了底部，剩下的滑动全由父类完成
-                            if (childLocation[1] >= viewPagerBottomHeight){
-
-                            }
-                            consumed[0] = 0
-                            consumed[1] = dy
-                            scrollBy(0, dy)
-                            if(isDebug) {
-                                Log.e("dc", "Outer --> onNestedPreScroll 》》在固定位置消耗向下【dy=$dy】")
-                            }
-                        }else{
-                            if(isDebug) {
-                                Log.e("dc", "Outer --> onNestedPreScroll 》》在固定位置交由【子类】消耗向下【dy=$dy】")
-                            }
-                        }
+                        isLayoutFrozen = false
                     } else {
-                        if (!target.canScrollVertically(-1)) {
-                            consumed[0] = 0
-                            consumed[1] = dy
-                            scrollBy(0, dy)
-                            if(isDebug) {
-                                Log.e("dc", "Outer --> onNestedPreScroll2 》》不在固定位置消耗向下【dy=$dy】")
-                            }
-                        }else{
-                            if(isDebug) {
-                                Log.e("dc", "Outer --> onNestedPreScroll2 》》不在固定位置交由【子类】消耗向下【dy=$dy】")
-                            }
+                        if (isDebug) {
+                            Log.e("dc", "Outer --> onNestedPreScroll 》》在固定位置交由【子类】消耗向下【dy=$dy】")
+                        }
+                    }
+                } else {
+                    if (!target.canScrollVertically(-1)) {
+                        consumed[0] = 0
+                        consumed[1] = dy
+                        scrollBy(0, dy)
+                        if (isDebug) {
+                            Log.e("dc", "Outer --> onNestedPreScroll2 》》不在固定位置消耗向下【dy=$dy】")
+                        }
+                        isLayoutFrozen = false
+                    } else {
+                        if (isDebug) {
+                            Log.e("dc", "Outer --> onNestedPreScroll2 》》不在固定位置交由【子类】消耗向下【dy=$dy】")
                         }
                     }
                 }
             }
-            else{
-                // 如果左右滑动一点都不消耗，全部交由 vp 内部
-                if(isDebug) {
-                    Log.e("dc", "Outer --> onNestedPreScroll2 》》一点不消耗左右滑动【dx=$dx】【dy=$dy】")
-                }
+        } else {
+            // 如果左右滑动一点都不消耗，全部交由 vp 内部
+            if (isDebug) {
+                Log.e("dc", "Outer --> onNestedPreScroll2 》》一点不消耗左右滑动【dx=$dx】【dy=$dy】")
             }
-            if(isDebug) {
-                Log.e("dc", "Outer --> onNestedPreScroll 》》【dx=$dx】【dy=$dy】【location[0]=${childLocation[0]}}】" +
-                        "【location[1]=${childLocation[1]}】【viewPagerStickyHeight=${viewPagerStickyHeight}】")
-            }
+        }
+        if (isDebug) {
+            Log.e("dc", "Outer --> onNestedPreScroll 》》【dx=$dx】【dy=$dy】【location[0]=${childLocation[0]}}】" +
+                    "【location[1]=${childLocation[1]}】【viewPagerStickyHeight=${viewPagerStickyHeight}】")
         }
     }
 

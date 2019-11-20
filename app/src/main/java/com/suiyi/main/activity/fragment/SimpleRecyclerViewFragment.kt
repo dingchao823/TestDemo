@@ -8,12 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.alibaba.android.vlayout.DelegateAdapter
 import com.alibaba.android.vlayout.VirtualLayoutManager
 import com.suiyi.main.R
-import com.suiyi.main.adapter.SimpleDividerAdapter
-import com.suiyi.main.adapter.SimpleImageAdapter
-import com.suiyi.main.adapter.SimpleTextAdapter
+import com.suiyi.main.adapter.*
+import com.suiyi.main.widget.StaggeredDividerItemDecoration
 
 class SimpleRecyclerViewFragment : Fragment(){
 
@@ -32,9 +32,13 @@ class SimpleRecyclerViewFragment : Fragment(){
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_nested)
         val virtualLayoutManager = VirtualLayoutManager(context!!)
         val adapter = DelegateAdapter(virtualLayoutManager)
-        recyclerView.layoutManager = VirtualLayoutManager(context!!)
-        recyclerView.adapter = adapter
-        adapter.addAdapter(SimpleTextAdapter(index))
+        val manager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        recyclerView.layoutManager = manager
+        recyclerView.adapter = StaggerGridAdapter(index)
+        recyclerView.itemAnimator = null
+        recyclerView.addItemDecoration(StaggeredDividerItemDecoration(context!!, 5))
+
+        adapter.addAdapter(StaggerGridAdapter(index))
 
         Log.e("dc", "【SimpleRecyclerViewFragment ${hashCode()}】 create view")
 

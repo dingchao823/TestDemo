@@ -18,6 +18,7 @@ class Path{
         const val CONTEXT_TEST_ACTIVITY = "/app/main/ContextTestActivity"
         const val RECYCLER_VIEW_DIFF_UTILS = "/app/main/RecyclerDiffActivity"
         const val WEBP_ACTIVITY = "/app/main/WebPActivity"
+        const val STAGGER_BUG_ACTIVITY = "/app/main/StaggerBugActivity"
 
     }
 

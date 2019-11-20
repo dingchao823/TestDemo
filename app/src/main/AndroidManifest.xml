@@ -58,6 +58,8 @@
 
         <activity android:name=".activity.WebPActivity" />
 
+        <activity android:name=".activity.StaggerBugActivity" />
+
         <meta-data
             android:name="environment"
             android:value="${environment}" />
