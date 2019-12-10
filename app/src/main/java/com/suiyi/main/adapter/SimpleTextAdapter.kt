@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.alibaba.android.vlayout.LayoutHelper
+import com.alibaba.android.vlayout.layout.BaseLayoutHelper
+import com.alibaba.android.vlayout.layout.BaseLayoutHelper.DefaultLayoutViewHelper
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper
 import com.suiyi.main.R
 import com.suiyi.main.base.BaseDelegateAdapter
@@ -18,7 +20,8 @@ import com.suiyi.main.utils.DimenUtils
  *
  * @author
  */
-class SimpleTextAdapter(val index : Int = 0) : BaseDelegateAdapter<SimpleTextAdapter.ViewHolder, String>(){
+class SimpleTextAdapter(val index : Int = 0) : BaseDelegateAdapter<SimpleTextAdapter.ViewHolder, String>(),
+        BaseLayoutHelper.LayoutViewUnBindListener, BaseLayoutHelper.LayoutViewBindListener{
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
         p0.textView.text = "当前位置 $index --- $p1"
@@ -29,7 +32,7 @@ class SimpleTextAdapter(val index : Int = 0) : BaseDelegateAdapter<SimpleTextAda
         textView.layoutParams = RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DimenUtils.dipTopx( context, 100f))
         textView.setTextColor(context!!.resources.getColor(R.color.white))
         textView.gravity = Gravity.CENTER
-        textView.setBackgroundColor(Color.parseColor("#000000"))
+//        textView.setBackgroundColor(Color.parseColor("#000000"))
         return ViewHolder(textView)
     }
 
@@ -39,6 +42,7 @@ class SimpleTextAdapter(val index : Int = 0) : BaseDelegateAdapter<SimpleTextAda
 
     override fun onCreateLayoutHelper(): LayoutHelper {
         val helper = LinearLayoutHelper()
+        helper.setLayoutViewHelper(DefaultLayoutViewHelper(this, this))
         helper.marginLeft = DimenUtils.dipTopx(context, 16f)
         helper.marginRight = DimenUtils.dipTopx(context, 16f)
         return helper
@@ -46,6 +50,14 @@ class SimpleTextAdapter(val index : Int = 0) : BaseDelegateAdapter<SimpleTextAda
 
     override fun getItemCount(): Int {
         return 20
+    }
+
+    override fun onBind(layoutView: View?, baseLayoutHelper: BaseLayoutHelper?) {
+        layoutView?.setBackgroundResource(R.mipmap.ic_image_2)
+    }
+
+    override fun onUnbind(layoutView: View?, baseLayoutHelper: BaseLayoutHelper?) {
+
     }
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){

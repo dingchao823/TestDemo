@@ -1,0 +1,687 @@
+{
+  "v": "5.4.4",
+  "fr": 30,
+  "ip": 0,
+  "op": 6,
+  "w": 78,
+  "h": 78,
+  "nm": "推荐&顶部（下）",
+  "ddd": 0,
+  "assets": [
+    {
+      "id": "image_0",
+      "w": 46,
+      "h": 48,
+      "u": "images/",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAwCAQAAADEbIBXAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAAAAEAAAABAE8lxNYAAAAHdElNRQfjDAQGCDGLHE9aAAADxUlEQVRYw+2WbWhWZRjHf/c2X8qXqRNfnpIKLB0mK0pBjURTC7VAS7SlSWQvmIX0RVOyREOiUKSSsH0YlZaUCaIgBEJEX0xTCRsWRb639ermXObmrw87O3vOdrY9s+dL4PV8eO7rOv/7d/73dc59zgl0I5xBX6pCVXfm5Ipeq9apK/OPnudZm6PGVflFl3vK1sgn3kWeNhk1vpQf9BOeiZCXPOn5POJ9Ou713+51gJXW5Qnv0hjd4G6LwV4J/NXfOb7guQhz0V32i6r5wPuiv0SIej9tQecF7wqrY/QO+7Q5+l/wrrImmnrB7V6forhavGv8NZpW5wde14EqiV+RG3qjv0VTaq20VyfK7uKdFu/CWis6Q7fDn/CeruCLrFf1L7faM4d1tuIvWt6VeJC1nveEW+yRUxexpzu8Yr2Xs2/XjsQ9nOtUC3NDR3Nmu9CS7sy4Ftfi/xCO9F0Xd64JLqEsUTnCGWalag+Fyix4X85yPIzLqjzJ+IT+9SJmMidR2skRlqXCP6YSHModUX6QKc6jNsr2M5VymhCAQgIVOMiMGTM2esSMGQfaL6pkXKc+HmcDAZxjegx2m9o7WsV3/m6PovBHlMo/4Wzkoi6qFQOH42pzHOaZ1HVdyGrQaEqpCJeLUi/WbAYDMAGY7F3NJww7AcLPvsd8SsI7sfpDfgpriPoBwMPAjmzgZQ/E4wMpy/4xS3vAWvtG47Hq+wCtbfEbqy2EVOdADXMT+bZEtpGPWEAFAM8BbyTWPZY72RKaOnZ+CsDbLHc4gFUJ50WebFZb7AX3RdXIuRvVe6Fj580xg7d4gHMJXxsYBTQxzt00Mow+DPMz4OVYMp8/+bJreFpMZkI0ejD6L6MM2BwrtvIqj/AJFHSXHSaG9PgilrzGId625CrgOZy+kcUMYHNXbRkKVLctOo/V7ZQPhZNZ+GN+zgKXde68FPm+XbWEMvpn5TdQRtsvnD0UMr1z57dzOlxMPfJ82BuvZBPL2x0/CJR14tz7GMVXuXQ5JW4FzqQ7n0wwsJYrrHcIb7IylOZKdSn9GcpCGtmf6jw0UMhOJrE9HGMaj/F19PDKJUazgeXU81Q43nK+nja1bH8LvN8qdbf9AZxjg/VOib09qx51f/w7pY5s2f4O925vtACgyFIepYExFPAtWMwylnAzTazjlSBA2OV09rHHmVkbJcOgeDwgsepzWY8Lb4oeqUcdD/b2B6td74g2nZzhJVdnOc96y7op23nbSzDEIa1fqI5I/yp3TDwa5qTmV16U3+Ike4MTLTdxDf8FPVz+CDXLabIAAAAbdEVYdENyZWF0b3IAQWRvYmUgQWZ0ZXIgRWZmZWN0c+agR5UAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTktMTItMDRUMDc6MDg6MzkrMDE6MDDc/w/GAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE5LTEyLTA0VDA3OjA4OjM5KzAxOjAwraK3egAAAABJRU5ErkJggg==",
+      "e": 0
+    },
+    {
+      "id": "image_1",
+      "w": 46,
+      "h": 47,
+      "u": "images/",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAvCAQAAAA27DAZAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAAAAEAAAABAE8lxNYAAAAHdElNRQfjDAQGCDWMcYtDAAAEMElEQVRYw+2VXYhVVRTHf0dvWZkaVmpqQyN+YpJioylmoSFpWSOZipol1mCjqZNiJBKIFtQ0WBBCWfQwldWD9VAIFdoHJaZTETkmyWhmWTpo43ykXp1fD/d43fd67zijPrruwz1rr//6nbXX2pwNAFjiBnuQNkudBPayzCHkNStcmeGvtCKXbL3aN+0V2uxH4Ej1lRbgde7M8HdaF/qJnFmziXgXom1WM9WyyADwMC+knWvp629BXgGJwF+RGz6HOj4B4G3KGc23QayBvennQpKBBzfRPvAbEvajK9ANGOr1/B397ij6Us1CAboDTzoKgC1RFUSb2HS2LRyIJoRtoXfo40ZDexX83Ny25JyeL3KuK1zrVbFf4rIwHllMf2AqRZRTSxXdeA9YylYAprOYRewAYF908Bx8N/bzczQi98AT0ccA9qOIN6I9duFXAHZFWwEcCVSnnmNcV3YF+R3owK3+k5M9LXuga+jBdorIb0m+CU5HEX/wfR7l0Wz4QD7kK4qY42gARgJzvRs4Ga0GiOqZGu+hC9tIMiWqyldHCG9nMT/yPLOAGcH6LACaWJ3R7fa8zwCeiaocyqRz9xeVn5WuV/9UHwNL1UctsMACV6kzLbDAm7NG+bK62Xbg4zlO1qGU6Daf9WuTao1P2TGGT4wRS9Tx2WXZ3hdVU63zGnsGv5ke8if7p4QH1eMeVvvFqeeB29XP4vqGZ0U6+7rNrjtz7nGh0+0UfrgsVTdbaaWV7lC/sNJK34qjQ61Rt1ieA/6cuiAYaPQagGTZGE6nB34nzUAT8+LxFvISKyhL1cr8jCwY7PLY+y4caFh53raYcByAy9ThFpjfVuf+KrZg0Sk2B+5BBgdeKQt4hB9ir7bN8KxXJakOdnUY2BulV87AO2ZlPWSqorHANIcBUBNtbNurExYzkXY8wFH2B+vzgueS+P9T8sKdxHGSTACCiy6BlAB7qIhOBurFGbdPyurIb8u5C4Dd0S9B08AERKeCKm5hCNuiQy1v2dsZyztnVA5jEHCYL6Nk21p32S5byqLsBW+gmHo2tuVIeTWz6cwH0YGWZb09YqONVntjq9E9rbHJ4x6zsGXhUk+oesK99mwVusADnoxzlmXG2mVp98WXxJX0Ysd5KgHsw3a6cwUAp9l9PvkGG+OPfdJaB7aoHWCtp2J1w5mLsKWEyDdtiBNO+69D8yoHeySNbnRda5oIuDZdfbP13pFTM8w6T6fRFa1EA7gqjdfG1K2ZER9hvc3p+Jo2oAF82qY0vsn7M2Jj0o3TJle0EQ3gExn4aen1ccGumiy7ADSAMzLw8wC8N2Nt/gWiAZycgVrigxn+3ItAAzg+Y7T/BegZF4kGcHRwMs6ip1wCNGSd6RT6vkuEBnCQtSbTzbnnEqIB7ONfHrPRY45tbU7UWiHYiclcx4boaGsz/geviF0WY/hLnQAAABt0RVh0Q3JlYXRvcgBBZG9iZSBBZnRlciBFZmZlY3Rz5qBHlQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxOS0xMi0wNFQwNzowODo0MSswMTowMOXVSLgAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTktMTItMDRUMDc6MDg6NDErMDE6MDCUiPAEAAAAAElFTkSuQmCC",
+      "e": 0
+    },
+    {
+      "id": "image_2",
+      "w": 76,
+      "h": 76,
+      "u": "images/",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAABMCAMAAADwSaEZAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACBFBMVEUAAAAAzEAAyD4Axj0Axj0AxjwAxjwAxzsAxjgAxjcAxjcAxjYAxjUAxDQAvzMAqlUAykEAyEAAyEAAxTQAxTMAxjEAxkQAyEMAyUIAxTIAxTEAxi0AykMAyUQAxS8Awy4AykYAyUUAxC4AxS0AzkUAyUcAxS0AxDEAy0YAykcAxC0AwywAyEkAykkAxCsAyCQAx0sAykkAwysAwSwAykkAykkAxCsAwigAy0sAykoAwykAxCsAyksAxCcAyk0Ay0sAwygAzUsAy00AwicAwSUAzE0AwicAy00AwicAy04AwyQAzk4Ay04AwiUAxCcAy1AAwiYAyk4AwSUAy08AwiQAzVEAwyMAy1AAwiMAzE8AwSIAzFEAwSMAzFEAwSMAqgAAzlAAwiIAzFEAwSIAzFEAwSMAzE0AvyYAy1MAwSIAzFIAwiIAzVIAwiEAzFEAwSEAzFIAwSEAzFIAwSEAxzsAxzoAxjkAyD8AyD4Axz4Axz0AxzwAxjgAxjcAxjYAxjUAxTUAxTQAyEEAyEAAxTMAxTIAyUMAyUIAyEIAxTEAxDAAyUQAxC8AyUUAxC4AyUYAxC0AykcAwywAykgAwysAykkAwyoAykoAwykAyksAy0sAwygAy0wAwicAy00AwiYAy04AwiUAy08AwiQAzFAAwiMAzFEAwSMAwSIAzFIAwSH///9MNpYiAAAAdHRSTlMAFEp5osLd8/PdwqJ5ShQDQ5DW1pBDLZHq6pEtSLy8SD7IyD4aqqoaYvDwYg6srA4p2topP/DwP076+k76Tj/6+inw8Cna2qysYmIa8PAaqqo+PsjISEi8vC0tkZHq6gNDQ5CQ1tYUFEpKeXmiosLC3d3z82HQ9eQAAAABYktHRKvJAWcoAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAB3RJTUUH4wwEBgg5hcfHaAAAAdpJREFUWMPl2OVWw0AQBeDFneLu7u7u7u7u7u5QpIViLe4OT0mDWyXJ/cc8wHdOTmZ3Zy4h0kpBUUlZRVVtaHhkRF1DU0tbR5cwK46evsHo2PjExOQQhU1NT8/Mzs0bGhlzaFMmpmYLi4u/sfklrrmFJS3Kynp5ZVUSxl3j2djKTdnZ8/nSMd66g6NclJPzxoZsTCBwcZVtublvyodteXjKoLy8t7flxbZ2fHylWX7+u3QwYUCgZCsoWEQPE4aESrLCwkV0sb2ISAlW1D597CAi+i8rJvaQCXYQ98eXxiccMcOOE5N+9UTyCVPsNOVnh6SeMcdO075b6WdssPOMr1ZmFjssO+cLlnvBDrvM+7Tyr9hilwUfWCF7rOjdKr5ij12XvGGlCKzs1Sq/QWC3FS9YJQaroixONQarqRVjdXcY7L5ejDWgsEYx1oTCmglpuUNhD62kDYe1kw4c1km6cFg36cFhvaQPh/WTARw2SB5x2NN/waA/ANoa0KaFHifoQYdeQdDLEXptYx8U6FMHfYSh4wF2cIGOVNhhDzqGYgdk6OiOXSqg6w52EcOuiNDlFbtWYxd+bBSBDUmw8Q02WCLQyItgwzgCjQmpAgaYVAGjVaqAoe9r0YyjnwFc74gy1tNqiwAAABt0RVh0Q3JlYXRvcgBBZG9iZSBBZnRlciBFZmZlY3Rz5qBHlQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxOS0xMi0wNFQwNzowODo0MiswMTowMNQ9UiUAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTktMTItMDRUMDc6MDg6NDIrMDE6MDClYOqZAAAAAElFTkSuQmCC",
+      "e": 0
+    },
+    {
+      "id": "comp_0",
+      "layers": [
+        {
+          "ddd": 0,
+          "ind": 1,
+          "ty": 2,
+          "nm": "顶部/1-常规-标签动画psd.psd",
+          "cl": "psd",
+          "refId": "image_0",
+          "sr": 1,
+          "ks": {
+            "o": {
+              "a": 0,
+              "k": 100,
+              "ix": 11
+            },
+            "r": {
+              "a": 0,
+              "k": 0,
+              "ix": 10
+            },
+            "p": {
+              "a": 1,
+              "k": [
+                {
+                  "i": {
+                    "x": 0.833,
+                    "y": 0.833
+                  },
+                  "o": {
+                    "x": 0.167,
+                    "y": 0.167
+                  },
+                  "t": 0,
+                  "s": [
+                    39,
+                    39.5,
+                    0
+                  ],
+                  "e": [
+                    39,
+                    101,
+                    0
+                  ],
+                  "to": [
+                    0,
+                    10.25,
+                    0
+                  ],
+                  "ti": [
+                    0,
+                    -10.25,
+                    0
+                  ]
+                },
+                {
+                  "t": 5
+                }
+              ],
+              "ix": 2
+            },
+            "a": {
+              "a": 0,
+              "k": [
+                23,
+                24,
+                0
+              ],
+              "ix": 1
+            },
+            "s": {
+              "a": 0,
+              "k": [
+                100,
+                100,
+                100
+              ],
+              "ix": 6
+            }
+          },
+          "ao": 0,
+          "ip": 0,
+          "op": 6,
+          "st": 0,
+          "bm": 0
+        }
+      ]
+    },
+    {
+      "id": "comp_1",
+      "layers": [
+        {
+          "ddd": 0,
+          "ind": 1,
+          "ty": 2,
+          "nm": "推荐/1-常规-标签动画psd.psd",
+          "cl": "psd",
+          "refId": "image_1",
+          "sr": 1,
+          "ks": {
+            "o": {
+              "a": 0,
+              "k": 100,
+              "ix": 11
+            },
+            "r": {
+              "a": 0,
+              "k": 0,
+              "ix": 10
+            },
+            "p": {
+              "a": 1,
+              "k": [
+                {
+                  "i": {
+                    "x": 0.833,
+                    "y": 0.833
+                  },
+                  "o": {
+                    "x": 0.167,
+                    "y": 0.167
+                  },
+                  "t": 0,
+                  "s": [
+                    39,
+                    -23.2,
+                    0
+                  ],
+                  "e": [
+                    39,
+                    40.6,
+                    0
+                  ],
+                  "to": [
+                    0,
+                    10.633,
+                    0
+                  ],
+                  "ti": [
+                    0,
+                    -10.633,
+                    0
+                  ]
+                },
+                {
+                  "t": 5
+                }
+              ],
+              "ix": 2
+            },
+            "a": {
+              "a": 0,
+              "k": [
+                23,
+                23.5,
+                0
+              ],
+              "ix": 1
+            },
+            "s": {
+              "a": 0,
+              "k": [
+                100,
+                100,
+                100
+              ],
+              "ix": 6
+            }
+          },
+          "ao": 0,
+          "ip": 0,
+          "op": 6,
+          "st": 0,
+          "bm": 0
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "ddd": 0,
+      "ind": 1,
+      "ty": 0,
+      "nm": "顶部下",
+      "refId": "comp_0",
+      "sr": 1,
+      "ks": {
+        "o": {
+          "a": 0,
+          "k": 100,
+          "ix": 11
+        },
+        "r": {
+          "a": 0,
+          "k": 0,
+          "ix": 10
+        },
+        "p": {
+          "a": 0,
+          "k": [
+            39,
+            39,
+            0
+          ],
+          "ix": 2
+        },
+        "a": {
+          "a": 0,
+          "k": [
+            39,
+            39,
+            0
+          ],
+          "ix": 1
+        },
+        "s": {
+          "a": 0,
+          "k": [
+            100,
+            100,
+            100
+          ],
+          "ix": 6
+        }
+      },
+      "ao": 0,
+      "hasMask": true,
+      "masksProperties": [
+        {
+          "inv": false,
+          "mode": "n",
+          "pt": {
+            "a": 0,
+            "k": {
+              "i": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ]
+              ],
+              "o": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ]
+              ],
+              "v": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  78
+                ],
+                [
+                  78,
+                  78
+                ],
+                [
+                  78,
+                  0
+                ]
+              ],
+              "c": true
+            },
+            "ix": 1
+          },
+          "o": {
+            "a": 0,
+            "k": 100,
+            "ix": 3
+          },
+          "x": {
+            "a": 0,
+            "k": 0,
+            "ix": 4
+          },
+          "nm": "蒙版 1"
+        },
+        {
+          "inv": false,
+          "mode": "a",
+          "pt": {
+            "a": 0,
+            "k": {
+              "i": [
+                [
+                  21.381,
+                  0
+                ],
+                [
+                  0,
+                  -21.381
+                ],
+                [
+                  -21.381,
+                  0
+                ],
+                [
+                  0,
+                  21.381
+                ]
+              ],
+              "o": [
+                [
+                  -21.381,
+                  0
+                ],
+                [
+                  0,
+                  21.381
+                ],
+                [
+                  21.381,
+                  0
+                ],
+                [
+                  0,
+                  -21.381
+                ]
+              ],
+              "v": [
+                [
+                  39.037,
+                  0.823
+                ],
+                [
+                  0.323,
+                  39.537
+                ],
+                [
+                  39.037,
+                  78.25
+                ],
+                [
+                  77.75,
+                  39.537
+                ]
+              ],
+              "c": true
+            },
+            "ix": 1
+          },
+          "o": {
+            "a": 0,
+            "k": 100,
+            "ix": 3
+          },
+          "x": {
+            "a": 0,
+            "k": 0,
+            "ix": 4
+          },
+          "nm": "蒙版 2"
+        }
+      ],
+      "w": 78,
+      "h": 78,
+      "ip": 0,
+      "op": 6,
+      "st": 0,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 2,
+      "ty": 0,
+      "nm": "推荐下",
+      "refId": "comp_1",
+      "sr": 1,
+      "ks": {
+        "o": {
+          "a": 0,
+          "k": 100,
+          "ix": 11
+        },
+        "r": {
+          "a": 0,
+          "k": 0,
+          "ix": 10
+        },
+        "p": {
+          "a": 0,
+          "k": [
+            39,
+            40.625,
+            0
+          ],
+          "ix": 2
+        },
+        "a": {
+          "a": 0,
+          "k": [
+            39,
+            39,
+            0
+          ],
+          "ix": 1
+        },
+        "s": {
+          "a": 0,
+          "k": [
+            100,
+            100,
+            100
+          ],
+          "ix": 6
+        }
+      },
+      "ao": 0,
+      "hasMask": true,
+      "masksProperties": [
+        {
+          "inv": false,
+          "mode": "n",
+          "pt": {
+            "a": 0,
+            "k": {
+              "i": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ]
+              ],
+              "o": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ]
+              ],
+              "v": [
+                [
+                  0.25,
+                  -1.25
+                ],
+                [
+                  0.25,
+                  76.75
+                ],
+                [
+                  78.25,
+                  76.75
+                ],
+                [
+                  78.25,
+                  -1.25
+                ]
+              ],
+              "c": true
+            },
+            "ix": 1
+          },
+          "o": {
+            "a": 0,
+            "k": 100,
+            "ix": 3
+          },
+          "x": {
+            "a": 0,
+            "k": 0,
+            "ix": 4
+          },
+          "nm": "蒙版 1"
+        },
+        {
+          "inv": false,
+          "mode": "a",
+          "pt": {
+            "a": 0,
+            "k": {
+              "i": [
+                [
+                  21.113,
+                  0
+                ],
+                [
+                  0,
+                  -21.113
+                ],
+                [
+                  -21.113,
+                  0
+                ],
+                [
+                  0,
+                  21.113
+                ]
+              ],
+              "o": [
+                [
+                  -21.113,
+                  0
+                ],
+                [
+                  0,
+                  21.113
+                ],
+                [
+                  21.113,
+                  0
+                ],
+                [
+                  0,
+                  -21.113
+                ]
+              ],
+              "v": [
+                [
+                  38.271,
+                  -0.832
+                ],
+                [
+                  0.043,
+                  37.396
+                ],
+                [
+                  38.271,
+                  75.625
+                ],
+                [
+                  76.5,
+                  37.396
+                ]
+              ],
+              "c": true
+            },
+            "ix": 1
+          },
+          "o": {
+            "a": 0,
+            "k": 100,
+            "ix": 3
+          },
+          "x": {
+            "a": 0,
+            "k": 0,
+            "ix": 4
+          },
+          "nm": "蒙版 2"
+        }
+      ],
+      "w": 78,
+      "h": 78,
+      "ip": 0,
+      "op": 6,
+      "st": 0,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 3,
+      "ty": 2,
+      "nm": "bg",
+      "refId": "image_2",
+      "sr": 1,
+      "ks": {
+        "o": {
+          "a": 0,
+          "k": 100,
+          "ix": 11
+        },
+        "r": {
+          "a": 0,
+          "k": 0,
+          "ix": 10
+        },
+        "p": {
+          "a": 0,
+          "k": [
+            39,
+            39,
+            0
+          ],
+          "ix": 2
+        },
+        "a": {
+          "a": 0,
+          "k": [
+            38,
+            38,
+            0
+          ],
+          "ix": 1
+        },
+        "s": {
+          "a": 0,
+          "k": [
+            100,
+            100,
+            100
+          ],
+          "ix": 6
+        }
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 6,
+      "st": 0,
+      "bm": 0
+    }
+  ],
+  "markers": []
+}

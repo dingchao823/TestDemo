@@ -7,6 +7,7 @@ import com.alibaba.android.vlayout.DelegateAdapter
 import com.alibaba.android.vlayout.VirtualLayoutManager
 import com.suiyi.main.R
 import com.suiyi.main.adapter.SimpleOneScrollAdapter
+import com.suiyi.main.adapter.SimpleTextAdapter
 import com.suiyi.main.constants.Path
 import kotlinx.android.synthetic.main.activity_one_scroll_recycler_bug.*
 
@@ -31,9 +32,9 @@ class RecyclerReuseBugActivity : Activity(){
         recycler_view_one_scroll.layoutManager = layoutManager
         recycler_view_one_scroll.adapter = fatherAdapter
 
-        var adapter : SimpleOneScrollAdapter? = null
+        var adapter : SimpleTextAdapter? = null
         for (index in 1..20) {
-            adapter = SimpleOneScrollAdapter()
+            adapter = SimpleTextAdapter()
             adapter.addData("1231231")
             adapter.addData("1231231")
             adapter.addData("1231231")

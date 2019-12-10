@@ -1,0 +1,396 @@
+{
+  "v": "5.4.4",
+  "fr": 30,
+  "ip": 0,
+  "op": 22,
+  "w": 88,
+  "h": 88,
+  "nm": "缩放-上滑",
+  "ddd": 0,
+  "assets": [
+    {
+      "id": "image_0",
+      "w": 42,
+      "h": 41,
+      "u": "images/",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAApCAQAAADpXnN+AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAAAAEAAAABAE8lxNYAAAAHdElNRQfjDAQGCjW+R+nBAAAEPElEQVRIx63WW2wUVRjA8f93ZrdbtpQtLdci4AUxmhgpJAIFUgIY7ioCFnrZCimVPtQQMUSDD+VBE0RFhUBoaYHShmhpVCSKShqUIoI2RQg8eCGGS4KUEmnBvc2c40MpSWG7u6V8bzPf+X7znTOTM0eIG3kD7dVqpnkcl3VJHVfVNafjVUi8AcXL27eadEEAjUHh3lS3rk9o3huRTYLBYIFGGUCT+vmul2JVqVjJFRuCm0DjPp+6MuUx12hZYH1tULQvyj18n52+svnmGguNOjJkzpZQ192id2++5UJjnUzO2R3sJZpXHVkhaLwHaxZ2zxSuC2xU2HjODZu2+Xov0Nz9erGgcdftK7g3W1Aa3gYa64JvWsWFBNfUf0gvVjikbo9GQu329AKN4Ixqbyl+MoFOlya5jkQmKxx8G6vf7HnF/QtCX2kEO5CRU/lLzE7XpEmzPVmhca+PRULNwQHTtTa4+rWfLJoZo9OVmaFj4YcFQ/+yXVuJGyvGB350UsBh4KKqL6Ki/rHBJjNYcEjzV+2NTwKsGtt21DUEoF/Rnpp70OIJN36QFAOoFz/9MjGyc3b/NdmPCAZfWdXt2Vm3n5jT3iQejeCbufdQ4iS0dGTvtuc7QxWheVn2maN30NwFwe+MgApkTK1o6g0J0BzK3unMCo+0sGc87T17GCx47YXWA25At6VP3PFbb0mAZn2mKmuyPcYiNGVSyqnv5cMRJy5pArgvpk3ZdfF+yK5Y8plZ6iLMiKlW+geBCQ6j/n50/Ef/9IWEc/WTJgSfsAgOV/Z8D5CyvPx630iAzFIB9Hgl6ULKrfd+7jsJv7datwRJVWKDYy/0Pgg02W0cAa0wgBKre3r6OBP37wXZ47pf31AIYKJufa/vdLWsPh6PLD3ibVlTG+3hUdE/CoZydeLs4bHIuQOu5AzjfP6GRFHvr2EsMtfGQjPXKUJ4m8t1gqjvYwchvLakuCey2B9cr7DxbI6WjYpW1Cc3GsK0Vvq3FQ65O+vP8H/StieEIeXYnrpo9a7onfSf03aCrCQCpVK4rNbzjTmlroIMdp4JzQ3mG18SDs7Zwc9Fr5bcdlLpCIw40NE9Ua7O1waWd70FMdIGJqPrXRs8+0P59eHuNc+n9rtMKh09nlDKdU2eZwknOw89RvQgPciI6fysm5OW1S69m4w7/c6obaChcIY9W7KdMaQBN9x/mZ9c39bEPPTEQQH2NtIIJe4OH9jtdeF44xNCO6MiwrXERgIoLBA9OqEO4kV6RDRgKYlo8OJ5EKhj4dWIrfhTcNz/znsQKDMct2AuK2nQgH6/rO+9itliMFgNUjbgSptxCdZZWbUv7nbXc+Q96+zQ4wzw0ECBVxdeO2BhEKxTXNCm96ASRjpZBsEh4+WKegEoKWrd7aLzJ5DAhn9PdNYZIgwqqay8Y+Q/xduRWZLchxUNqUbe2Xca4H90yIdA5K/pAQAAABt0RVh0Q3JlYXRvcgBBZG9iZSBBZnRlciBFZmZlY3Rz5qBHlQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxOS0xMi0wNFQwNzoxMDozNiswMTowMPju4BsAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTktMTItMDRUMDc6MTA6MzYrMDE6MDCJs1inAAAAAElFTkSuQmCC",
+      "e": 0
+    },
+    {
+      "id": "image_1",
+      "w": 46,
+      "h": 47,
+      "u": "images/",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAvCAQAAAA27DAZAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAAAAEAAAABAE8lxNYAAAAHdElNRQfjDAQGCjjA9pV8AAAEMElEQVRYw+2VXYhVVRTHf0dvWZkaVmpqQyN+YpJioylmoSFpWSOZipol1mCjqZNiJBKIFtQ0WBBCWfQwldWD9VAIFdoHJaZTETkmyWhmWTpo43ykXp1fD/d43fd67zijPrruwz1rr//6nbXX2pwNAFjiBnuQNkudBPayzCHkNStcmeGvtCKXbL3aN+0V2uxH4Ej1lRbgde7M8HdaF/qJnFmziXgXom1WM9WyyADwMC+knWvp629BXgGJwF+RGz6HOj4B4G3KGc23QayBvennQpKBBzfRPvAbEvajK9ANGOr1/B397ij6Us1CAboDTzoKgC1RFUSb2HS2LRyIJoRtoXfo40ZDexX83Ny25JyeL3KuK1zrVbFf4rIwHllMf2AqRZRTSxXdeA9YylYAprOYRewAYF908Bx8N/bzczQi98AT0ccA9qOIN6I9duFXAHZFWwEcCVSnnmNcV3YF+R3owK3+k5M9LXuga+jBdorIb0m+CU5HEX/wfR7l0Wz4QD7kK4qY42gARgJzvRs4Ga0GiOqZGu+hC9tIMiWqyldHCG9nMT/yPLOAGcH6LACaWJ3R7fa8zwCeiaocyqRz9xeVn5WuV/9UHwNL1UctsMACV6kzLbDAm7NG+bK62Xbg4zlO1qGU6Daf9WuTao1P2TGGT4wRS9Tx2WXZ3hdVU63zGnsGv5ke8if7p4QH1eMeVvvFqeeB29XP4vqGZ0U6+7rNrjtz7nGh0+0UfrgsVTdbaaWV7lC/sNJK34qjQ61Rt1ieA/6cuiAYaPQagGTZGE6nB34nzUAT8+LxFvISKyhL1cr8jCwY7PLY+y4caFh53raYcByAy9ThFpjfVuf+KrZg0Sk2B+5BBgdeKQt4hB9ir7bN8KxXJakOdnUY2BulV87AO2ZlPWSqorHANIcBUBNtbNurExYzkXY8wFH2B+vzgueS+P9T8sKdxHGSTACCiy6BlAB7qIhOBurFGbdPyurIb8u5C4Dd0S9B08AERKeCKm5hCNuiQy1v2dsZyztnVA5jEHCYL6Nk21p32S5byqLsBW+gmHo2tuVIeTWz6cwH0YGWZb09YqONVntjq9E9rbHJ4x6zsGXhUk+oesK99mwVusADnoxzlmXG2mVp98WXxJX0Ysd5KgHsw3a6cwUAp9l9PvkGG+OPfdJaB7aoHWCtp2J1w5mLsKWEyDdtiBNO+69D8yoHeySNbnRda5oIuDZdfbP13pFTM8w6T6fRFa1EA7gqjdfG1K2ZER9hvc3p+Jo2oAF82qY0vsn7M2Jj0o3TJle0EQ3gExn4aen1ccGumiy7ADSAMzLw8wC8N2Nt/gWiAZycgVrigxn+3ItAAzg+Y7T/BegZF4kGcHRwMs6ip1wCNGSd6RT6vkuEBnCQtSbTzbnnEqIB7ONfHrPRY45tbU7UWiHYiclcx4boaGsz/geviF0WY/hLnQAAABt0RVh0Q3JlYXRvcgBBZG9iZSBBZnRlciBFZmZlY3Rz5qBHlQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxOS0xMi0wNFQwNzoxMDo0MSswMTowMDeM14wAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTktMTItMDRUMDc6MTA6NDErMDE6MDBG0W8wAAAAAElFTkSuQmCC",
+      "e": 0
+    },
+    {
+      "id": "image_2",
+      "w": 76,
+      "h": 76,
+      "u": "images/",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAABMCAMAAADwSaEZAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACBFBMVEUAAAAAzEAAyD4Axj0Axj0AxjwAxjwAxzsAxjgAxjcAxjcAxjYAxjUAxDQAvzMAqlUAykEAyEAAyEAAxTQAxTMAxjEAxkQAyEMAyUIAxTIAxTEAxi0AykMAyUQAxS8Awy4AykYAyUUAxC4AxS0AzkUAyUcAxS0AxDEAy0YAykcAxC0AwywAyEkAykkAxCsAyCQAx0sAykkAwysAwSwAykkAykkAxCsAwigAy0sAykoAwykAxCsAyksAxCcAyk0Ay0sAwygAzUsAy00AwicAwSUAzE0AwicAy00AwicAy04AwyQAzk4Ay04AwiUAxCcAy1AAwiYAyk4AwSUAy08AwiQAzVEAwyMAy1AAwiMAzE8AwSIAzFEAwSMAzFEAwSMAqgAAzlAAwiIAzFEAwSIAzFEAwSMAzE0AvyYAy1MAwSIAzFIAwiIAzVIAwiEAzFEAwSEAzFIAwSEAzFIAwSEAxzsAxzoAxjkAyD8AyD4Axz4Axz0AxzwAxjgAxjcAxjYAxjUAxTUAxTQAyEEAyEAAxTMAxTIAyUMAyUIAyEIAxTEAxDAAyUQAxC8AyUUAxC4AyUYAxC0AykcAwywAykgAwysAykkAwyoAykoAwykAyksAy0sAwygAy0wAwicAy00AwiYAy04AwiUAy08AwiQAzFAAwiMAzFEAwSMAwSIAzFIAwSH///9MNpYiAAAAdHRSTlMAFEp5osLd8/PdwqJ5ShQDQ5DW1pBDLZHq6pEtSLy8SD7IyD4aqqoaYvDwYg6srA4p2topP/DwP076+k76Tj/6+inw8Cna2qysYmIa8PAaqqo+PsjISEi8vC0tkZHq6gNDQ5CQ1tYUFEpKeXmiosLC3d3z82HQ9eQAAAABYktHRKvJAWcoAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAB3RJTUUH4wwEBgsA8e8cowAAAdpJREFUWMPl2OVWw0AQBeDFneLu7u7u7u7u7u5QpIViLe4OT0mDWyXJ/cc8wHdOTmZ3Zy4h0kpBUUlZRVVtaHhkRF1DU0tbR5cwK46evsHo2PjExOQQhU1NT8/Mzs0bGhlzaFMmpmYLi4u/sfklrrmFJS3Kynp5ZVUSxl3j2djKTdnZ8/nSMd66g6NclJPzxoZsTCBwcZVtublvyodteXjKoLy8t7flxbZ2fHylWX7+u3QwYUCgZCsoWEQPE4aESrLCwkV0sb2ISAlW1D597CAi+i8rJvaQCXYQ98eXxiccMcOOE5N+9UTyCVPsNOVnh6SeMcdO075b6WdssPOMr1ZmFjssO+cLlnvBDrvM+7Tyr9hilwUfWCF7rOjdKr5ij12XvGGlCKzs1Sq/QWC3FS9YJQaroixONQarqRVjdXcY7L5ejDWgsEYx1oTCmglpuUNhD62kDYe1kw4c1km6cFg36cFhvaQPh/WTARw2SB5x2NN/waA/ANoa0KaFHifoQYdeQdDLEXptYx8U6FMHfYSh4wF2cIGOVNhhDzqGYgdk6OiOXSqg6w52EcOuiNDlFbtWYxd+bBSBDUmw8Q02WCLQyItgwzgCjQmpAgaYVAGjVaqAoe9r0YyjnwFc74gy1tNqiwAAABt0RVh0Q3JlYXRvcgBBZG9iZSBBZnRlciBFZmZlY3Rz5qBHlQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxOS0xMi0wNFQwNzoxMDo0NSswMTowMMPD858AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTktMTItMDRUMDc6MTA6NDUrMDE6MDCynksjAAAAAElFTkSuQmCC",
+      "e": 0
+    },
+    {
+      "id": "comp_0",
+      "layers": [
+        {
+          "ddd": 0,
+          "ind": 1,
+          "ty": 2,
+          "nm": "推荐/1-常规-标签动画psd.psd",
+          "cl": "psd",
+          "refId": "image_1",
+          "sr": 1,
+          "ks": {
+            "o": {
+              "a": 0,
+              "k": 100,
+              "ix": 11
+            },
+            "r": {
+              "a": 0,
+              "k": 0,
+              "ix": 10
+            },
+            "p": {
+              "a": 0,
+              "k": [
+                44.5,
+                45.35,
+                0
+              ],
+              "ix": 2
+            },
+            "a": {
+              "a": 0,
+              "k": [
+                23,
+                23.5,
+                0
+              ],
+              "ix": 1
+            },
+            "s": {
+              "a": 0,
+              "k": [
+                100,
+                100,
+                100
+              ],
+              "ix": 6
+            }
+          },
+          "ao": 0,
+          "ip": 0,
+          "op": 22,
+          "st": 1,
+          "bm": 0
+        },
+        {
+          "ddd": 0,
+          "ind": 2,
+          "ty": 2,
+          "nm": "bg",
+          "refId": "image_2",
+          "sr": 1,
+          "ks": {
+            "o": {
+              "a": 0,
+              "k": 100,
+              "ix": 11
+            },
+            "r": {
+              "a": 0,
+              "k": 0,
+              "ix": 10
+            },
+            "p": {
+              "a": 0,
+              "k": [
+                44,
+                43.75,
+                0
+              ],
+              "ix": 2
+            },
+            "a": {
+              "a": 0,
+              "k": [
+                38,
+                38,
+                0
+              ],
+              "ix": 1
+            },
+            "s": {
+              "a": 0,
+              "k": [
+                100,
+                100,
+                100
+              ],
+              "ix": 6
+            }
+          },
+          "ao": 0,
+          "ip": 0,
+          "op": 22,
+          "st": -4,
+          "bm": 0
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "ddd": 0,
+      "ind": 1,
+      "ty": 2,
+      "nm": "首页-未选中",
+      "refId": "image_0",
+      "sr": 1,
+      "ks": {
+        "o": {
+          "a": 1,
+          "k": [
+            {
+              "i": {
+                "x": [
+                  0.833
+                ],
+                "y": [
+                  0.833
+                ]
+              },
+              "o": {
+                "x": [
+                  0.167
+                ],
+                "y": [
+                  0.167
+                ]
+              },
+              "t": 0,
+              "s": [
+                100
+              ],
+              "e": [
+                0
+              ]
+            },
+            {
+              "t": 1
+            }
+          ],
+          "ix": 11
+        },
+        "r": {
+          "a": 0,
+          "k": 0,
+          "ix": 10
+        },
+        "p": {
+          "a": 0,
+          "k": [
+            44.143,
+            44.146,
+            0
+          ],
+          "ix": 2
+        },
+        "a": {
+          "a": 0,
+          "k": [
+            21,
+            20.5,
+            0
+          ],
+          "ix": 1
+        },
+        "s": {
+          "a": 0,
+          "k": [
+            100,
+            100,
+            100
+          ],
+          "ix": 6
+        }
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 22,
+      "st": -42,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 2,
+      "ty": 0,
+      "nm": "预合成 1",
+      "refId": "comp_0",
+      "sr": 1,
+      "ks": {
+        "o": {
+          "a": 0,
+          "k": 100,
+          "ix": 11
+        },
+        "r": {
+          "a": 0,
+          "k": 0,
+          "ix": 10
+        },
+        "p": {
+          "a": 0,
+          "k": [
+            44,
+            44,
+            0
+          ],
+          "ix": 2
+        },
+        "a": {
+          "a": 0,
+          "k": [
+            44,
+            44,
+            0
+          ],
+          "ix": 1
+        },
+        "s": {
+          "a": 1,
+          "k": [
+            {
+              "i": {
+                "x": [
+                  0.833,
+                  0.833,
+                  0.833
+                ],
+                "y": [
+                  0.833,
+                  0.833,
+                  0.833
+                ]
+              },
+              "o": {
+                "x": [
+                  0.167,
+                  0.167,
+                  0.167
+                ],
+                "y": [
+                  0.167,
+                  0.167,
+                  0.167
+                ]
+              },
+              "t": 0,
+              "s": [
+                0,
+                0,
+                100
+              ],
+              "e": [
+                90,
+                90,
+                100
+              ]
+            },
+            {
+              "i": {
+                "x": [
+                  0.833,
+                  0.833,
+                  0.833
+                ],
+                "y": [
+                  0.833,
+                  0.833,
+                  0.833
+                ]
+              },
+              "o": {
+                "x": [
+                  0.167,
+                  0.167,
+                  0.167
+                ],
+                "y": [
+                  0.167,
+                  0.167,
+                  0.167
+                ]
+              },
+              "t": 1,
+              "s": [
+                90,
+                90,
+                100
+              ],
+              "e": [
+                90,
+                90,
+                100
+              ]
+            },
+            {
+              "i": {
+                "x": [
+                  0.833,
+                  0.833,
+                  0.833
+                ],
+                "y": [
+                  0.833,
+                  0.833,
+                  0.833
+                ]
+              },
+              "o": {
+                "x": [
+                  0.167,
+                  0.167,
+                  0.167
+                ],
+                "y": [
+                  0.167,
+                  0.167,
+                  0.167
+                ]
+              },
+              "t": 13,
+              "s": [
+                90,
+                90,
+                100
+              ],
+              "e": [
+                100,
+                100,
+                100
+              ]
+            },
+            {
+              "t": 21
+            }
+          ],
+          "ix": 6,
+          "x": "var $bm_rt;\nvar amp, freq, decay, n, n, t, t, v;\namp = 0.1;\nfreq = 0.4;\ndecay = 10;\n$bm_rt = n = 0;\nif (numKeys > 0) {\n    $bm_rt = n = nearestKey(time).index;\n    if (key(n).time > time) {\n        n--;\n    }\n}\nif (n == 0) {\n    $bm_rt = t = 0;\n} else {\n    $bm_rt = t = $bm_sub(time, key(n).time);\n}\nif (n > 0) {\n    v = velocityAtTime($bm_sub(key(n).time, $bm_div(thisComp.frameDuration, 10)));\n    $bm_rt = $bm_sum(value, $bm_div($bm_mul($bm_mul(v, amp), Math.sin($bm_mul($bm_mul($bm_mul(freq, t), 2), Math.PI))), Math.exp($bm_mul(decay, t))));\n} else {\n    $bm_rt = value;\n}"
+        }
+      },
+      "ao": 0,
+      "w": 88,
+      "h": 88,
+      "ip": 0,
+      "op": 22,
+      "st": 0,
+      "bm": 0
+    }
+  ],
+  "markers": []
+}

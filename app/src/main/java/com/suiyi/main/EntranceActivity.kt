@@ -40,6 +40,7 @@ class EntranceActivity : Activity(){
         adapter.dataSource.add(RecyclerBean("RecyclerView 局部刷新实践", Path.RECYCLER_VIEW_DIFF_UTILS))
         adapter.dataSource.add(RecyclerBean("WebP加载", Path.WEBP_ACTIVITY))
         adapter.dataSource.add(RecyclerBean("vLayout 瀑布流闪烁错乱bug", Path.STAGGER_BUG_ACTIVITY))
+        adapter.dataSource.add(RecyclerBean("皮肤包下载", Path.DOWNLOAD_SKIN_ACTIVITY))
     }
 
 }

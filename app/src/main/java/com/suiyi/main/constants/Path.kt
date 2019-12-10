@@ -19,6 +19,7 @@ class Path{
         const val RECYCLER_VIEW_DIFF_UTILS = "/app/main/RecyclerDiffActivity"
         const val WEBP_ACTIVITY = "/app/main/WebPActivity"
         const val STAGGER_BUG_ACTIVITY = "/app/main/StaggerBugActivity"
+        const val DOWNLOAD_SKIN_ACTIVITY = "/app/main/DownloadSkinBagActivity"
 
     }
 
