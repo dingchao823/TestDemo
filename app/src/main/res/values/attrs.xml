@@ -21,4 +21,20 @@
 
     </declare-styleable>
 
+    <declare-styleable name="csiv_CustomShapeImageView">
+        <attr name="csiv_shape" format="integer">
+            <enum name="circle" value="1" />
+            <enum name="rectangle" value="2" />
+            <enum name="arc" value="3" />
+        </attr>
+        <attr name="csiv_imageBorderWidth" format="dimension" />
+        <attr name="csiv_borderColor" format="color" />
+        <attr name="csiv_roundRadius" format="dimension" />
+        <attr name="csiv_leftTopRadius" format="dimension" />
+        <attr name="csiv_rightTopRadius" format="dimension" />
+        <attr name="csiv_rightBottomRadius" format="dimension" />
+        <attr name="csiv_leftBottomRadius" format="dimension" />
+        <attr name="csiv_onlyDrawBorder" format="boolean" />
+    </declare-styleable>
+
 </resources>

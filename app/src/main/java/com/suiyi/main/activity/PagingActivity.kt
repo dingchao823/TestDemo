@@ -2,21 +2,17 @@ package com.suiyi.main.activity
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ComputableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.base.bean.PagingBean
 import com.suiyi.main.R
 import com.suiyi.main.adapter.PagingAdapter
-import com.suiyi.main.constants.Path
-import com.suiyi.main.model.JetPackViewModel
-import com.suiyi.main.model.source.PageDataSourceFactory
+import com.example.base.constants.Path
+import com.suiyi.main.mvvm.models.JetPackViewModel
 import kotlinx.android.synthetic.main.activity_jetpack.*
 
 /**
@@ -25,14 +21,14 @@ import kotlinx.android.synthetic.main.activity_jetpack.*
  * @author dingchao823
  */
 @Route(path = Path.JET_PACK_ACTIVITY)
-class JetPackActivity : AppCompatActivity(), View.OnClickListener {
+class PagingActivity : AppCompatActivity(), View.OnClickListener {
 
-    lateinit var adapter : PagingAdapter
+    var adapter : PagingAdapter? = null
 
     lateinit var mModel : JetPackViewModel
 
     private val listObservable = Observer<PagedList<PagingBean>?> {
-        adapter.submitList(it)
+        adapter?.submitList(it)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,20 +37,24 @@ class JetPackActivity : AppCompatActivity(), View.OnClickListener {
 
         mModel = ViewModelProviders.of(this).get(JetPackViewModel::class.java)
 
-
-        val layoutManager = LinearLayoutManager(this)
-        adapter = PagingAdapter(this)
-        recycler_view.layoutManager = layoutManager
+        adapter = PagingAdapter(this, this)
+        recycler_view.layoutManager = LinearLayoutManager(this)
         recycler_view.adapter = adapter
+
+        initRecyclerView()
 
         function.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
 
+        initRecyclerView()
+
+    }
+
+    private fun initRecyclerView() {
+        mModel.list?.removeObserver(listObservable)
+        mModel.initList()
         mModel.list?.observe(this, listObservable)
-        mModel.sourceFactory.source.isEnableLoading = true
-
-
     }
 }

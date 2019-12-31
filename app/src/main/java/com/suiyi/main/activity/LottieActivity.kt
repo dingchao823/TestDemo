@@ -6,7 +6,7 @@ import android.view.View
 import com.airbnb.lottie.LottieAnimationView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.suiyi.main.R
-import com.suiyi.main.constants.Path
+import com.example.base.constants.Path
 import kotlinx.android.synthetic.main.activity_lottie.*
 
 @Route(path = Path.LOTTIE_ACTIVITY)

@@ -7,9 +7,8 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.vlayout.DelegateAdapter
 import com.alibaba.android.vlayout.VirtualLayoutManager
 import com.suiyi.main.R
-import com.suiyi.main.adapter.SimpleTextAdapter
 import com.suiyi.main.adapter.SimpleTextWithDiffAdapter
-import com.suiyi.main.constants.Path
+import com.example.base.constants.Path
 import kotlinx.android.synthetic.main.activity_recycler_diff.*
 import kotlinx.coroutines.*
 

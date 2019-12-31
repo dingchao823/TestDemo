@@ -1,28 +1,20 @@
 package com.suiyi.main.activity
 
-import android.R.layout.simple_list_item_2
 import android.app.Activity
 import android.graphics.Color
 import android.os.Bundle
 
 import android.util.Log
-import android.view.View
 import android.widget.Toast
-import android.widget.Toolbar
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.scwang.smartrefresh.layout.api.RefreshHeader
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.constant.RefreshState
-import com.scwang.smartrefresh.layout.header.TwoLevelHeader
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import com.scwang.smartrefresh.layout.listener.SimpleMultiPurposeListener
 import com.suiyi.main.R
-import com.suiyi.main.adapter.BaseRecyclerAdapter
-import com.suiyi.main.adapter.SmartViewHolder
-import com.suiyi.main.constants.Path
+import com.example.base.constants.Path
 import com.suiyi.main.utils.DimenUtils
 import kotlinx.android.synthetic.main.activity_second_floor.*
-import java.util.*
 
 
 /**

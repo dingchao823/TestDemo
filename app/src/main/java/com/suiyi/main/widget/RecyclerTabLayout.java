@@ -38,7 +38,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.suiyi.main.R;
 
-public class RecyclerTabLayout extends RecyclerView {
+public class RecyclerTabLayout extends StickyNotScrollRecyclerView {
 
     protected static final long DEFAULT_SCROLL_DURATION = 200;
     protected static final float DEFAULT_POSITION_THRESHOLD = 0.6f;
@@ -438,10 +438,8 @@ public class RecyclerTabLayout extends RecyclerView {
 
         @Override
         public void onPageSelected(int position) {
-            if (mScrollState == ViewPager.SCROLL_STATE_IDLE) {
-                if (mRecyclerTabLayout.mIndicatorPosition != position) {
-                    mRecyclerTabLayout.scrollToTab(position);
-                }
+            if (mRecyclerTabLayout.mIndicatorPosition != position) {
+                mRecyclerTabLayout.scrollToTab(position);
             }
         }
     }

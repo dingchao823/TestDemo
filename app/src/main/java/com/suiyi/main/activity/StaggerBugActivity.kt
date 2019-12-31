@@ -3,13 +3,11 @@ package com.suiyi.main.activity
 import android.app.Activity
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.vlayout.DelegateAdapter
 import com.alibaba.android.vlayout.VirtualLayoutManager
-import com.suiyi.main.R
 import com.suiyi.main.adapter.StaggerGridAdapter
-import com.suiyi.main.constants.Path
+import com.example.base.constants.Path
 
 /**
  * 用 vlayout 实现瀑布流 bug 修复

@@ -9,13 +9,17 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.alibaba.android.vlayout.LayoutHelper
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper
+import com.gem.tastyfood.widget.NestedOuterRecyclerView
 import com.suiyi.main.R
+import com.suiyi.main.activity.fragment.ViewPagerFragmentA
 import com.suiyi.main.base.BaseDelegateAdapter
 import com.suiyi.main.utils.DimenUtils
 import com.suiyi.main.utils.ScreenUtil
+import com.suiyi.main.utils.TabAnimationUtil
 import com.suiyi.main.widget.RecyclerTabLayout
 
-class SimpleViewPagerAdapter(var fm : FragmentManager, val activity : Activity)
+class SimpleViewPagerAdapter(var fm : FragmentManager,
+                             val activity : Activity)
     : BaseDelegateAdapter<SimpleViewPagerAdapter.ViewHolder, String>(){
 
     init {
@@ -33,13 +37,15 @@ class SimpleViewPagerAdapter(var fm : FragmentManager, val activity : Activity)
         val viewPager = view?.findViewById<ViewPager>(R.id.view_Pager)
         val screenHeight = ScreenUtil.getRealScreenHeight(activity)
         val statusHeight = ScreenUtil.getStatusBarHeight()
-        val titleBarHeight = DimenUtils.dipTopx(50f)
-        val tabBarHeight = 144
+        val bottomNavigationHeight = ScreenUtil.getBottomNavigationHeight()
+        val titleBarHeight = 0
+        val tabBarHeight = DimenUtils.dipTopx(48f)
         val viewPagerHeight = screenHeight - statusHeight - titleBarHeight - tabBarHeight
         val params = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, viewPagerHeight)
         viewPager?.layoutParams = params
         return ViewHolder(view!!)
     }
+
 
     override fun onBindViewHolder(holder: ViewHolder, p1: Int) {
 
@@ -54,11 +60,14 @@ class SimpleViewPagerAdapter(var fm : FragmentManager, val activity : Activity)
         val tabLayout : RecyclerTabLayout = itemView.findViewById(R.id.tab_layout)
 
         init {
-            viewPager.offscreenPageLimit = 3
+            viewPager.offscreenPageLimit = 1
             viewPager.adapter = SimpleFragmentAdapter(fm)
 
             tabLayout.isNestedScrollingEnabled = true
             tabLayout.setUpWithAdapter(SimpleTabAdapter(activity, viewPager, newDataSource))
+
+            ViewPagerFragmentA.tabLayout = tabLayout
+            ViewPagerFragmentA.viewPager = viewPager
         }
     }
 

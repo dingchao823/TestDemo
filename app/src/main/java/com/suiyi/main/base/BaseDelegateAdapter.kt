@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.alibaba.android.vlayout.DelegateAdapter
 import com.suiyi.main.SHApplication
+import kotlinx.android.extensions.LayoutContainer
 
 /**
  * 首页基础适配器
@@ -266,17 +267,9 @@ abstract class BaseDelegateAdapter<ViewHolder: RecyclerView.ViewHolder, DataType
         return LayoutInflater.from(activityContext).inflate(layoutId, parent, false)
     }
 
-    open class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    abstract class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
-        private val views = SparseArray<View>()
+        abstract fun onBindViewHolder(position : Int)
 
-        fun <T : View> getView(viewId: Int): T {
-            var view = views[viewId]
-            if (view == null) {
-                view = itemView?.findViewById(viewId)
-                views.put(viewId, view)
-            }
-            return view as T
-        }
     }
 }

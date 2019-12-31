@@ -8,7 +8,7 @@ import com.opensource.svgaplayer.SVGADrawable
 import com.opensource.svgaplayer.SVGAParser
 import com.opensource.svgaplayer.SVGAVideoEntity
 import com.suiyi.main.R
-import com.suiyi.main.constants.Path
+import com.example.base.constants.Path
 import kotlinx.android.synthetic.main.activity_svga_player.*
 
 @Route(path = Path.SVGA_PLAYER_ACTIVITY)

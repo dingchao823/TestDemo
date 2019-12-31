@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -75,6 +76,9 @@ class StaggerGridAdapter(val index : Int) : BaseDelegateAdapter<StaggerGridAdapt
         fun onBindViewHolder(position: Int) {
             newDataSource.elementAtOrNull(position)
             debugCode(position)
+            containerView.setOnClickListener {
+                Toast.makeText(context, "点击了$position", Toast.LENGTH_SHORT).show()
+            }
         }
 
         private fun debugCode(position: Int) {

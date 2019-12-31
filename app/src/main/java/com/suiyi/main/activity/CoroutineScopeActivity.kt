@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.suiyi.main.constants.Path
+import com.example.base.constants.Path
 import kotlinx.coroutines.*
 
 @Route(path = Path.COROUTINES_SCOPE_ACTIVITY_PATH)

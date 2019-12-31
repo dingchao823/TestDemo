@@ -6,9 +6,8 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.vlayout.DelegateAdapter
 import com.alibaba.android.vlayout.VirtualLayoutManager
 import com.suiyi.main.R
-import com.suiyi.main.adapter.SimpleOneScrollAdapter
 import com.suiyi.main.adapter.SimpleTextAdapter
-import com.suiyi.main.constants.Path
+import com.example.base.constants.Path
 import kotlinx.android.synthetic.main.activity_one_scroll_recycler_bug.*
 
 /**

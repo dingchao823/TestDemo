@@ -15,7 +15,7 @@ import com.bumptech.glide.load.Transformation
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
-import com.suiyi.main.constants.Path
+import com.example.base.constants.Path
 
 
 @Route(path = Path.WEBP_ACTIVITY)

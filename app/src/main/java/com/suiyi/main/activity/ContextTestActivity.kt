@@ -7,7 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.androidkun.xtablayout.XTabLayout
 import com.suiyi.main.R
 import com.suiyi.main.SHApplication
-import com.suiyi.main.constants.Path
+import com.example.base.constants.Path
 
 /**
  * 主要测试 LayoutInflater 在 传入 activity Context 和 Application context 的区别

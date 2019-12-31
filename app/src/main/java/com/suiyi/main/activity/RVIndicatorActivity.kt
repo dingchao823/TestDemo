@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.suiyi.main.R
 import com.suiyi.main.adapter.NormalRecyclerAdapter
-import com.suiyi.main.constants.Path
+import com.example.base.constants.Path
 import com.suiyi.main.utils.DimenUtils
 import kotlinx.android.synthetic.main.activity_rv_indicator.*
 

@@ -1,4 +1,4 @@
-package com.suiyi.main.constants
+package com.example.base.constants
 
 class Path{
 
@@ -14,12 +14,18 @@ class Path{
         const val LOTTIE_ACTIVITY = "/app/main/LottieActivity"
         const val NESTED_VIEW_PAGER_ACTIVITY = "/app/main/NestedViewPagerActivity"
         const val SVGA_PLAYER_ACTIVITY = "/app/main/SVGAPlayerActivity"
-        const val JET_PACK_ACTIVITY = "/app/main/JetPackActivity"
+        const val JET_PACK_ACTIVITY = "/app/main/PagingActivity"
         const val CONTEXT_TEST_ACTIVITY = "/app/main/ContextTestActivity"
         const val RECYCLER_VIEW_DIFF_UTILS = "/app/main/RecyclerDiffActivity"
         const val WEBP_ACTIVITY = "/app/main/WebPActivity"
         const val STAGGER_BUG_ACTIVITY = "/app/main/StaggerBugActivity"
         const val DOWNLOAD_SKIN_ACTIVITY = "/app/main/DownloadSkinBagActivity"
+        const val DRAWABLE_ACTIVITY = "/app/main/drawableActivity"
+        const val CIRCLE_RECTANGLE_ACTIVITY = "/app/main/circleRectangleActivity"
+        const val STICKY_NO_SCROLL_ACTIVITY = "/app/main/StickyNotScrollActivity"
+        const val DATABINDING_ACTIVITY = "/app/main/DataBindingActivity"
+        const val MVVM_ACTIVITY = "/app/main/MvvmActivity"
+        const val NEW_NESTED_VIEW_PAGER = "/app/main/NestedViewPager"
 
     }
 

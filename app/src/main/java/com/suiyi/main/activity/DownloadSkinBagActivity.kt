@@ -3,7 +3,6 @@ package com.suiyi.main.activity
 import android.app.Activity
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Path
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Environment
@@ -13,13 +12,11 @@ import com.airbnb.lottie.LottieDrawable
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import com.suiyi.main.R
 import com.suiyi.main.interfaces.DownloadListener
 import com.suiyi.main.utils.DownloadUtil
 import kotlinx.android.synthetic.main.activity_download_skin.*
-import kotlinx.android.synthetic.main.activity_lottie.*
 import java.io.File
 import java.io.FileInputStream
 import java.io.IOException
@@ -29,7 +26,7 @@ import java.io.IOException
  * 下载皮肤包到 sd 卡位置之后替换到文件中测试，搭配 Lottie 使用
  *
  */
-@Route(path = com.suiyi.main.constants.Path.DOWNLOAD_SKIN_ACTIVITY)
+@Route(path = com.example.base.constants.Path.DOWNLOAD_SKIN_ACTIVITY)
 class DownloadSkinBagActivity : Activity(){
 
     val img0 = "2019/11/28/16eb10d2a74a9c30?w=46&h=47&f=png&s=1466"

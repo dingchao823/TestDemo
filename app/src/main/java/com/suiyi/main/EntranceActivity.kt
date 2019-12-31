@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.suiyi.main.adapter.EntranceAdapter
 import com.example.base.bean.RecyclerBean
-import com.suiyi.main.constants.Path
+import com.example.base.constants.Path
 import kotlinx.android.synthetic.main.activity_recycler_view.*
 
 class EntranceActivity : Activity(){
@@ -41,6 +41,12 @@ class EntranceActivity : Activity(){
         adapter.dataSource.add(RecyclerBean("WebP加载", Path.WEBP_ACTIVITY))
         adapter.dataSource.add(RecyclerBean("vLayout 瀑布流闪烁错乱bug", Path.STAGGER_BUG_ACTIVITY))
         adapter.dataSource.add(RecyclerBean("皮肤包下载", Path.DOWNLOAD_SKIN_ACTIVITY))
+        adapter.dataSource.add(RecyclerBean("自定义InsetDrawable测试", Path.DRAWABLE_ACTIVITY))
+        adapter.dataSource.add(RecyclerBean("圆角矩形试验", Path.CIRCLE_RECTANGLE_ACTIVITY))
+        adapter.dataSource.add(RecyclerBean("横向可滑动recyclerView按压父类不可滑试验", Path.STICKY_NO_SCROLL_ACTIVITY))
+        adapter.dataSource.add(RecyclerBean("dataBinding实验", Path.DATABINDING_ACTIVITY))
+        adapter.dataSource.add(RecyclerBean("mvvm实践", Path.MVVM_ACTIVITY))
+        adapter.dataSource.add(RecyclerBean("新的嵌套滑动实现", Path.NEW_NESTED_VIEW_PAGER))
     }
 
 }
