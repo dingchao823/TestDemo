@@ -56,6 +56,8 @@ class ViewPagerFragmentA : Fragment(){
         adapter.addAdapter(SimpleDividerAdapter(10))
         adapter.addAdapter(SimpleViewPagerAdapter(activity!!.supportFragmentManager, activity as Activity))
 
+        ScreenUtil.getBottomNavigationHeight()
+
         return view
     }
 

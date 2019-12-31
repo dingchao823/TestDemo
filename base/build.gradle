@@ -102,6 +102,9 @@ dependencies {
     /** ARouter **/
     api 'com.alibaba:arouter-api:1.5.0'
 
+    /** AutoSize 今日头条屏幕适配方案终极版 **/
+    api 'me.jessyan:autosize:1.1.2'
+
     /** 滴滴出行 Doraemonkit **/
 //    debugImplementation 'com.didichuxing.doraemonkit:doraemonkit:2.0.1'
 //    releaseImplementation 'com.didichuxing.doraemonkit:doraemonkit-no-op:2.0.1'

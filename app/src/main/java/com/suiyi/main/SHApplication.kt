@@ -1,10 +1,9 @@
 package com.suiyi.main
 
 import android.app.Application
-import android.content.Context
 import android.content.pm.PackageManager
-import android.util.Log
 import com.alibaba.android.arouter.launcher.ARouter
+
 //import com.didichuxing.doraemonkit.DoraemonKit
 
 class SHApplication : Application() {
@@ -24,6 +23,8 @@ class SHApplication : Application() {
         domainUrl = info.metaData?.getString("environment")
 
 //        DoraemonKit.install(this)
+
+        // AutoSize 的初始化在 AndroidManifest.xml InitProvider 里
     }
 
     companion object {

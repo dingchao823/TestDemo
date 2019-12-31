@@ -3,7 +3,6 @@ package com.example.base.constants
 class Path{
 
     companion object{
-
         const val ANNOTATION_ACTIVITY_PATH = "/app/main/AnnotationActivity"
         const val COROUTINES_SCOPE_ACTIVITY_PATH = "/app/main/CoroutineScopeActivity"
         const val SECOND_FLOOR_ACTIVITY = "/app/main/SecondFloorActivity"
@@ -24,9 +23,11 @@ class Path{
         const val CIRCLE_RECTANGLE_ACTIVITY = "/app/main/circleRectangleActivity"
         const val STICKY_NO_SCROLL_ACTIVITY = "/app/main/StickyNotScrollActivity"
         const val DATABINDING_ACTIVITY = "/app/main/DataBindingActivity"
-        const val MVVM_ACTIVITY = "/app/main/MvvmActivity"
         const val NEW_NESTED_VIEW_PAGER = "/app/main/NestedViewPager"
+    }
 
+    object JetPackPath{
+        const val JET_PACK_MVVM_ACTIVITY = "/jetpack/main/MvvmActivity"
     }
 
 }

@@ -45,7 +45,7 @@ class EntranceActivity : Activity(){
         adapter.dataSource.add(RecyclerBean("圆角矩形试验", Path.CIRCLE_RECTANGLE_ACTIVITY))
         adapter.dataSource.add(RecyclerBean("横向可滑动recyclerView按压父类不可滑试验", Path.STICKY_NO_SCROLL_ACTIVITY))
         adapter.dataSource.add(RecyclerBean("dataBinding实验", Path.DATABINDING_ACTIVITY))
-        adapter.dataSource.add(RecyclerBean("mvvm实践", Path.MVVM_ACTIVITY))
+        adapter.dataSource.add(RecyclerBean("mvvm实践", Path.JetPackPath.JET_PACK_MVVM_ACTIVITY))
         adapter.dataSource.add(RecyclerBean("新的嵌套滑动实现", Path.NEW_NESTED_VIEW_PAGER))
     }
 

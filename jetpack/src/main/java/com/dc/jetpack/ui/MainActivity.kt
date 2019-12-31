@@ -9,7 +9,7 @@ import com.dc.jetpack.R
 import com.dc.jetpack.viewmodel.MainViewModel
 import com.example.base.constants.Path
 
-@Route(path = Path.MVVM_ACTIVITY)
+@Route(path = Path.JetPackPath.JET_PACK_MVVM_ACTIVITY)
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel : MainViewModel

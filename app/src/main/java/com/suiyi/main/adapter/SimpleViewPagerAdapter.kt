@@ -1,6 +1,7 @@
 package com.suiyi.main.adapter
 
 import android.app.Activity
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -35,12 +36,10 @@ class SimpleViewPagerAdapter(var fm : FragmentManager,
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val view = getRootView(p0, R.layout.recycler_item_nested_view_pager)
         val viewPager = view?.findViewById<ViewPager>(R.id.view_Pager)
-        val screenHeight = ScreenUtil.getRealScreenHeight(activity)
-        val statusHeight = ScreenUtil.getStatusBarHeight()
-        val bottomNavigationHeight = ScreenUtil.getBottomNavigationHeight()
-        val titleBarHeight = 0
+        val screenHeight = ScreenUtil.getActivityHeight(activity)
+        val statusHeight = ScreenUtil.getRealStatusBarHeight()
         val tabBarHeight = DimenUtils.dipTopx(48f)
-        val viewPagerHeight = screenHeight - statusHeight - titleBarHeight - tabBarHeight
+        var viewPagerHeight = screenHeight - statusHeight - tabBarHeight
         val params = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, viewPagerHeight)
         viewPager?.layoutParams = params
         return ViewHolder(view!!)
