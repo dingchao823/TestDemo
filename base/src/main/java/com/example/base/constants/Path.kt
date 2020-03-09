@@ -24,6 +24,7 @@ class Path{
         const val STICKY_NO_SCROLL_ACTIVITY = "/app/main/StickyNotScrollActivity"
         const val DATABINDING_ACTIVITY = "/app/main/DataBindingActivity"
         const val NEW_NESTED_VIEW_PAGER = "/app/main/NestedViewPager"
+        const val DECOR_VIEW_ACTIVITY = "/app/main/DecorViewActivity"
     }
 
     object JetPackPath{

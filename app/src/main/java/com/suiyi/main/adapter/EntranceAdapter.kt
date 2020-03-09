@@ -1,5 +1,6 @@
 package com.suiyi.main.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.suiyi.main.R
 import com.example.base.bean.RecyclerBean
 
-class EntranceAdapter(var context : Context) : RecyclerView.Adapter<EntranceAdapter.ViewHolder>(){
+class EntranceAdapter(var context : Activity) : RecyclerView.Adapter<EntranceAdapter.ViewHolder>(){
 
     var dataSource : ArrayList<RecyclerBean> = ArrayList()
 
@@ -39,6 +40,7 @@ class EntranceAdapter(var context : Context) : RecyclerView.Adapter<EntranceAdap
 
         holder.itemView.setOnClickListener{
             ARouter.getInstance().build(dataSource[position].routerUrl).navigation()
+            context.overridePendingTransition(0, 0)
         }
     }
 

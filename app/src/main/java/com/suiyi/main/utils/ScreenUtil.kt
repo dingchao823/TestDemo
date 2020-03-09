@@ -86,7 +86,6 @@ object ScreenUtil {
     /**
      * 底部导航栏是否展示
      */
-    @SuppressLint("ObsoleteSdkInt")
     fun isNavigationBarShowing(context: Context) : Boolean{
         val haveNavigationBar = checkDeviceHasNavigationBar(context)
         if (!haveNavigationBar){

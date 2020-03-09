@@ -19,7 +19,8 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:theme,android:icon,android:name,android:roundIcon,android:label">
-        <activity android:name=".activity.ViewPagerNewActivity"></activity>
+        <activity android:name=".activity.DecorViewActivity"></activity>
+        <activity android:name=".activity.ViewPagerNewActivity" />
         <activity android:name=".activity.DataBindingActivity" />
         <activity android:name=".activity.StickyNotScrollActivity" />
         <activity android:name=".activity.CircleRectangleActivity" /> <!-- AutoSize 框架使用 -->
@@ -61,6 +62,7 @@
         <activity android:name=".activity.StaggerBugActivity" />
         <activity android:name=".activity.DownloadSkinBagActivity" />
         <activity android:name=".activity.DrawableActivity" />
+
         <meta-data
             android:name="environment"
             android:value="${environment}" />
