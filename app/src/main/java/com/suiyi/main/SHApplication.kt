@@ -3,14 +3,19 @@ package com.suiyi.main
 import android.app.Application
 import android.content.Context
 import android.content.pm.PackageManager
+import android.os.Handler
+import android.os.Looper
 import android.os.Process
 import android.text.TextUtils
+import android.util.Log
+import android.widget.Toast
 import androidx.multidex.MultiDex
 import com.alibaba.android.arouter.launcher.ARouter
 import com.tencent.bugly.crashreport.CrashReport
 import com.tencent.bugly.crashreport.CrashReport.UserStrategy
 import com.tinkerpatch.sdk.TinkerPatch
 import com.tinkerpatch.sdk.loader.TinkerPatchApplicationLike
+import foundation.cockroach.Cockroach
 import java.io.BufferedReader
 import java.io.FileReader
 import java.io.IOException
@@ -34,6 +39,7 @@ class SHApplication : Application() {
         initARouter()
         initTinker()
         initBugly(true)
+        initCrashHandle()
     }
 
     private fun initSystemParams() {
@@ -80,6 +86,29 @@ class SHApplication : Application() {
         val strategy = UserStrategy(context)
         strategy.isUploadProcess = processName == null || processName == packageName
         CrashReport.initCrashReport(applicationContext, BuildConfig.BUGLY_ID, isOpenLog)
+    }
+
+    /**
+     * 初始化崩溃重启框架
+     */
+    private fun initCrashHandle(){
+        Cockroach.install { thread, throwable ->
+            //开发时使用Cockroach可能不容易发现bug，所以建议开发阶段在handlerException中用Toast谈个提示框，
+            //由于handlerException可能运行在非ui线程中，Toast又需要在主线程，所以new了一个new Handler(Looper.getMainLooper())，
+            //所以千万不要在下面的run方法中执行耗时操作，因为run已经运行在了ui线程中。
+            //new Handler(Looper.getMainLooper())只是为了能弹出个toast，并无其他用途
+            //开发时使用Cockroach可能不容易发现bug，所以建议开发阶段在handlerException中用Toast谈个提示框，
+            //由于handlerException可能运行在非ui线程中，Toast又需要在主线程，所以new了一个new Handler(Looper.getMainLooper())，
+            //所以千万不要在下面的run方法中执行耗时操作，因为run已经运行在了ui线程中。
+            //new Handler(Looper.getMainLooper())只是为了能弹出个toast，并无其他用途
+            Handler(Looper.getMainLooper()).post {
+                try {
+                    Toast.makeText(applicationContext, "Exception Happend\n" + thread.toString() + "\n" + throwable.toString(), Toast.LENGTH_SHORT).show()
+                } catch (e: Throwable) {
+                    // do nothing
+                }
+            }
+        }
     }
 
     /**

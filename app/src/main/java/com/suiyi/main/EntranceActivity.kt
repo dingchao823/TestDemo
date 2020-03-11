@@ -21,7 +21,6 @@ class EntranceActivity : Activity(){
         adapter = EntranceAdapter(this)
         adapter.dataSource = ArrayList()
         recyclerView_main.adapter = adapter
-
         initData()
     }
 
