@@ -25,6 +25,8 @@ class Path{
         const val DATABINDING_ACTIVITY = "/app/main/DataBindingActivity"
         const val NEW_NESTED_VIEW_PAGER = "/app/main/NestedViewPager"
         const val DECOR_VIEW_ACTIVITY = "/app/main/DecorViewActivity"
+        const val TINKER_TEST_ACTIVITY = "/app/main/TinkerTestActivity"
+        const val STATUS_BAR_ACTIVITY = "/app/main/StatusBarActivity"
     }
 
     object JetPackPath{

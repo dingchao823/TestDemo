@@ -48,6 +48,8 @@ class EntranceActivity : Activity(){
         adapter.dataSource.add(RecyclerBean("mvvm实践", Path.JetPackPath.JET_PACK_MVVM_ACTIVITY))
         adapter.dataSource.add(RecyclerBean("新的嵌套滑动实现", Path.NEW_NESTED_VIEW_PAGER))
         adapter.dataSource.add(RecyclerBean("DecorView添加视图", Path.DECOR_VIEW_ACTIVITY))
+        adapter.dataSource.add(RecyclerBean("Tinker测试", Path.TINKER_TEST_ACTIVITY))
+        adapter.dataSource.add(RecyclerBean("状态栏设置", Path.STATUS_BAR_ACTIVITY))
     }
 
 }

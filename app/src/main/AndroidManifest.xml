@@ -19,7 +19,9 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:theme,android:icon,android:name,android:roundIcon,android:label">
-        <activity android:name=".activity.DecorViewActivity"></activity>
+        <activity android:name=".activity.StatusBarActivity"></activity>
+        <activity android:name=".activity.TinkerTestActivity" />
+        <activity android:name=".activity.DecorViewActivity" />
         <activity android:name=".activity.ViewPagerNewActivity" />
         <activity android:name=".activity.DataBindingActivity" />
         <activity android:name=".activity.StickyNotScrollActivity" />
