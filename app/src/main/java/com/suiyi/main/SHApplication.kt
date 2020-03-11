@@ -3,10 +3,17 @@ package com.suiyi.main
 import android.app.Application
 import android.content.Context
 import android.content.pm.PackageManager
+import android.os.Process
+import android.text.TextUtils
 import androidx.multidex.MultiDex
 import com.alibaba.android.arouter.launcher.ARouter
+import com.tencent.bugly.crashreport.CrashReport
+import com.tencent.bugly.crashreport.CrashReport.UserStrategy
 import com.tinkerpatch.sdk.TinkerPatch
 import com.tinkerpatch.sdk.loader.TinkerPatchApplicationLike
+import java.io.BufferedReader
+import java.io.FileReader
+import java.io.IOException
 
 
 class SHApplication : Application() {
@@ -26,6 +33,7 @@ class SHApplication : Application() {
         initSystemParams()
         initARouter()
         initTinker()
+        initBugly(true)
     }
 
     private fun initSystemParams() {
@@ -54,6 +62,51 @@ class SHApplication : Application() {
 
             TinkerPatch.with().fetchPatchUpdateAndPollWithInterval()
         }
+    }
+
+    /**
+     * 开启 Bugly
+     *
+     * @param isOpenLog 是否开启日志
+     */
+    @Suppress("SameParameterValue")
+    private fun initBugly(isOpenLog : Boolean){
+        val context = applicationContext
+        // 获取当前包名
+        val packageName = context.packageName
+        // 获取当前进程名
+        val processName = getProcessName(Process.myPid())
+        // 设置是否为上报进程
+        val strategy = UserStrategy(context)
+        strategy.isUploadProcess = processName == null || processName == packageName
+        CrashReport.initCrashReport(applicationContext, BuildConfig.BUGLY_ID, isOpenLog)
+    }
+
+    /**
+     * 获取进程号对应的进程名
+     *
+     * @param pid 进程号
+     * @return 进程名
+     */
+    private fun getProcessName(pid: Int): String? {
+        var reader: BufferedReader? = null
+        try {
+            reader = BufferedReader(FileReader("/proc/$pid/cmdline"))
+            var processName: String = reader.readLine()
+            if (!TextUtils.isEmpty(processName)) {
+                processName = processName.trim { it <= ' ' }
+            }
+            return processName
+        } catch (throwable: Throwable) {
+            throwable.printStackTrace()
+        } finally {
+            try {
+                reader?.close()
+            } catch (exception: IOException) {
+                exception.printStackTrace()
+            }
+        }
+        return null
     }
 
     companion object {

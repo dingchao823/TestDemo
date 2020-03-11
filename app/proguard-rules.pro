@@ -36,3 +36,5 @@
 -keep class io.flutter.view.**  { *; }
 -keep class io.flutter.**  { *; }
 -keep class io.flutter.plugins.**  { *; }
+-dontwarn com.tencent.bugly.**
+-keep public class com.tencent.bugly.**{*;}

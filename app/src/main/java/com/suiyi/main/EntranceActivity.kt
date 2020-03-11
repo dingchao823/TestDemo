@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.suiyi.main.adapter.EntranceAdapter
 import com.example.base.bean.RecyclerBean
 import com.example.base.constants.Path
+import com.tencent.bugly.crashreport.CrashReport
 import kotlinx.android.synthetic.main.activity_recycler_view.*
 
 class EntranceActivity : Activity(){
