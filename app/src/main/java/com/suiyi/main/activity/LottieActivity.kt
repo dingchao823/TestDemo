@@ -4,6 +4,7 @@ import android.app.Activity
 import android.os.Bundle
 import android.view.View
 import com.airbnb.lottie.LottieAnimationView
+import com.airbnb.lottie.LottieComposition
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.suiyi.main.R
 import com.example.base.constants.Path
@@ -114,8 +115,15 @@ class LottieActivity : Activity(), View.OnClickListener {
     }
 
     private fun setLottieAnimation(view : LottieAnimationView, json : String) {
-        view.setAnimation(json)
-        view.repeatCount = 0
+        val composition = LottieComposition.Factory.fromFileSync(this, json)
+        view.cancelAnimation()
+        view.progress = 0f
+        view.setComposition(composition!!)
+        view.playAnimation()
+
+//        view.setAnimation(json)
+//        view.repeatCount = 0
+//        view.progress = 0f
     }
 
     fun playAnimation(animationView: LottieAnimationView?) {

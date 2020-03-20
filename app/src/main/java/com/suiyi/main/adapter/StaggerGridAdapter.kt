@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.alibaba.android.vlayout.LayoutHelper
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper
+import com.alibaba.android.vlayout.layout.StaggeredGridLayoutHelper
 import com.suiyi.main.R
 import com.suiyi.main.base.BaseDelegateAdapter
 import com.suiyi.main.utils.DimenUtils
-import com.suiyi.main.widget.StaggeredGridLayoutHelper
 import kotlinx.android.extensions.LayoutContainer
 
 /**

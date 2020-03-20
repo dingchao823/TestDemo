@@ -4,6 +4,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.hujiang.android-aspectjx'
 apply from: '../tinkerpatch.gradle'
+apply from: '../reinforce_release.gradle'
 
 android {
 
@@ -36,6 +37,16 @@ android {
         buildConfigField "String", "BUGLY_ID", "\"${BUGLY_ID}\""
     }
 
+    //签名
+    signingConfigs {
+        release {
+            storeFile file("../keystore/testdemo.keystore")
+            storePassword '332007906dc'
+            keyAlias 'testdemo'
+            keyPassword '332007906dc'
+        }
+    }
+
     dexOptions {
         jumboMode = true
         maxProcessCount 4
@@ -44,8 +55,13 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            multiDexEnabled = true
+            versionNameSuffix = versionName
+            applicationIdSuffix = moduleName
         }
         debug {
             minifyEnabled false

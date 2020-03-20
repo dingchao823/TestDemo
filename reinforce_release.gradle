@@ -1,0 +1,166 @@
+import java.util.zip.ZipEntry
+import java.util.zip.ZipOutputStream
+
+ext {
+    BASE = "reinforce/"
+    JAR = BASE + "jiagu.jar"
+    NAME = "18201726027"//360加固账号
+    PASSWORD = "wuxiangyi0000"//360加固密码
+    KEY_PATH = "keystore/testdemo.keystore" //密钥路径
+    KEY_PASSWORD = "332007906dc" //密钥密码
+    ALIAS = "testdemo" //密钥别名
+    ALIAS_PASSWORD = "332007906dc" //别名密码
+    OUTPUT_PATH = "app/build/outputs/release/" //加固后所有apk的保存路径
+    CHANNEL_CONFIG = BASE + "channel/"//保存渠道配置
+}
+
+class ApkFile {
+    String channel
+    File file
+}
+
+/**
+ * 构建发布到生产环境的所有渠道apk
+ */
+task reinforceRelease {
+
+    group "jiaGuApk"
+    dependsOn("assembleRelease")
+
+    doLast {
+        List<ApkFile> apkFiles = findApkFiles("release")
+        if (apkFiles.size() == 0) {
+            throw new RuntimeException("no apk files has found!")
+        }
+        File outputDir = new File(OUTPUT_PATH)
+        if (outputDir.exists()) {
+            if (!outputDir.delete()) {
+                throw new RuntimeException("delete outputDir failure!")
+            }
+        }
+        if (!outputDir.mkdirs()) {
+            throw new RuntimeException("make outputDir failure!")
+        }
+        for (int i = 0; i < apkFiles.size(); i++) {
+            ApkFile apkFile = apkFiles.get(i)
+            def cmdLogin = "java/bin/java -jar " + JAR + " -login" + " " + NAME + " " + PASSWORD
+            execute360JiaGuCmd(cmdLogin)
+            def cmdSign = "java/bin/java -jar " + JAR + " -importsign " + KEY_PATH + " " + KEY_PASSWORD + " " + ALIAS + " " + ALIAS_PASSWORD
+            execute360JiaGuCmd(cmdSign)
+            def showSign = "java/bin/java -jar " + JAR + " -showsign"
+            execute360JiaGuCmd(showSign)
+            def channelSign = "java/bin/java -jar " + JAR + " -importmulpkg " + CHANNEL_CONFIG + "channel" + ".txt"
+            execute360JiaGuCmd(channelSign)
+            def cmdJiaGu = "java/bin/java -jar " + JAR + " -jiagu " + apkFile.file.getAbsolutePath() + " " + "app/build/outputs/apk/release/" + " -autosign -automulpkg"
+            execute360JiaGuCmd(cmdJiaGu)
+        }
+
+        File apkDir = new File("app/build/outputs/apk/release/")
+        filterApk(apkDir)
+        renameApk(apkDir)
+    }
+
+    tasks.whenTaskAdded { theTask ->
+        if (theTask.name == "assembleRelease") {
+            theTask.dependsOn "cleanOutputsDir"
+        }
+    }
+
+    task cleanOutputsDir {
+        def outputsPath = getBuildDir().getAbsolutePath() + File.separator + "outputs" + File.separator
+        logger.error(("reinforce gradle --> ${outputsPath}"))
+        new File(outputsPath).deleteDir()
+    }
+
+}
+
+/**
+ * 查找所有apk
+ * @param buildType release 或者 debug
+ * @return ArrayList <ApkFile>
+ */
+def findApkFiles(String buildType) {
+    System.out.println(" ")
+    System.out.println("reinforce gradle --> find apk files starting ..........")
+    File apkDir = new File("app/build/outputs/apk/" + buildType + "/")
+    System.out.println("reinforce gradle --> into ${apkDir}")
+    File[] channelDirs = apkDir.listFiles()
+    if (channelDirs == null || channelDirs.size() == 0){
+        throw new RuntimeException("find apk failed !!!")
+    }
+    List<ApkFile> apkFiles = new ArrayList<>()
+    for (int i = 0; i < channelDirs.length; i++) {
+        File channelDir = channelDirs[i]
+        ApkFile apkFile = new ApkFile()
+        if (channelDir.isDirectory()){
+            apkFile.channel = channelDir.name
+            def channelFiles = channelDir.listFiles()
+            if(channelFiles != null && channelFiles.size() > 0){
+                channelFiles.each { channelFile ->
+                    if (channelFile.name.endsWith(".apk")){
+                        apkFile.file = channelFile
+                        apkFiles.add(apkFile)
+                        System.out.println("reinforce gradle --> find apk ${channelFile.name}")
+                    }
+                }
+            }
+        }else {
+            if (channelDir.name.endsWith(".apk")) {
+                apkFile.file = channelDir
+                apkFiles.add(apkFile)
+                System.out.println("reinforce gradle --> find apk ${channelDir.name}")
+            }
+        }
+    }
+    return apkFiles
+}
+
+/**
+ * 删除一些临时文件
+ * @param outputDir apk保存目录
+ */
+def filterApk(File outputDir) {
+    System.out.println(" ")
+    System.out.println("reinforce gradle --> filter apk start ..........")
+    System.out.println("reinforce gradle --> switch to ${outputDir}")
+    println(outputDir)
+    File[] files = outputDir.listFiles()
+    for (int i = 0; i < files.length; i++) {
+        File file = files[i]
+        String fileName = file.getName()
+        if (fileName.endsWith("jiagu_sign.apk") || fileName.endsWith("temp.apk") || !fileName.endsWith("_sign.apk")) {
+            file.delete()
+            System.out.println("reinforce gradle --> delete ${fileName} ")
+        }
+    }
+    System.out.println("reinforce gradle --> filter apk end ..........")
+    System.out.println(" ")
+}
+
+/**
+ * 修改所有apk文件名
+ * @param outputDir apk保存目录
+ */
+def renameApk(File outputDir) {
+    System.out.println(" ")
+    System.out.println("reinforce gradle --> rename apk start ..........")
+    File[] files = outputDir.listFiles()
+    for (int i = 0; i < files.length; i++) {
+        File file = files[i]
+        String fileName = file.getName()
+        String[] suffixArr = fileName.split("_")
+        String rename = suffixArr[0] + "_" + suffixArr[4] + ".apk"
+        file.renameTo(file.getParent() + "/" + rename)
+        System.out.println("reinforce gradle --> rename apk [${fileName}] to [${rename}]..........")
+    }
+    System.out.println("reinforce gradle --> rename apk end ..........")
+    System.out.println(" ")
+}
+
+
+def execute360JiaGuCmd(cmd) {
+    def p = cmd.execute(null, new File("reinforce/"))
+    println p.text
+    p.waitFor()  // 用以等待外部进程调用结束
+    println p.exitValue()
+}

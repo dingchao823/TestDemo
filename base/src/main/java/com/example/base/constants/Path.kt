@@ -27,6 +27,9 @@ class Path{
         const val DECOR_VIEW_ACTIVITY = "/app/main/DecorViewActivity"
         const val TINKER_TEST_ACTIVITY = "/app/main/TinkerTestActivity"
         const val STATUS_BAR_ACTIVITY = "/app/main/StatusBarActivity"
+        const val STRING_SOME_THING_ACTIVITY = "/app/main/StringSomethingActivity"
+        const val CLICK_TEST_ACTIVITY = "/app/main/ClickTestActivity"
+        const val RECYLER_VIEW_LOAD_MORE_ACTIVITY = "/app/main/RecyclerLoadMoreActivity"
     }
 
     object JetPackPath{

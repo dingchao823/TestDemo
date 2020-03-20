@@ -50,6 +50,9 @@ class EntranceActivity : Activity(){
         adapter.dataSource.add(RecyclerBean("DecorView添加视图", Path.DECOR_VIEW_ACTIVITY))
         adapter.dataSource.add(RecyclerBean("Tinker测试", Path.TINKER_TEST_ACTIVITY))
         adapter.dataSource.add(RecyclerBean("状态栏设置", Path.STATUS_BAR_ACTIVITY))
+        adapter.dataSource.add(RecyclerBean("文字设置", Path.STRING_SOME_THING_ACTIVITY))
+        adapter.dataSource.add(RecyclerBean("点击方式测试", Path.CLICK_TEST_ACTIVITY))
+        adapter.dataSource.add(RecyclerBean("RV上拉加载更多", Path.RECYLER_VIEW_LOAD_MORE_ACTIVITY))
     }
 
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/product_outer_container">
+
+    <ImageView
+        android:id="@+id/progress_bar"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginRight="6dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/common_icon_loading"
+        app:layout_constraintBottom_toBottomOf="@id/loading_text"
+        app:layout_constraintEnd_toStartOf="@+id/loading_text"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/loading_text" />
+
+    <TextView
+        android:id="@+id/loading_text"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="left|center_vertical"
+        android:text="努力加载中"
+        android:textColor="#8A8A8A"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/progress_bar"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
