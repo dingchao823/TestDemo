@@ -4,7 +4,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.hujiang.android-aspectjx'
 apply from: '../tinkerpatch.gradle'
-apply from: '../reinforce_release.gradle'
+apply from: '../reinforce/reinforce_release.gradle'
 
 android {
 

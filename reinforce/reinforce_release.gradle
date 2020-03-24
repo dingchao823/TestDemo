@@ -2,21 +2,17 @@ import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
 
 ext {
-    BASE = "reinforce/"
-    JAR = BASE + "jiagu.jar"
-    NAME = "18201726027"//360加固账号
-    PASSWORD = "wuxiangyi0000"//360加固密码
-    KEY_PATH = "keystore/testdemo.keystore" //密钥路径
-    KEY_PASSWORD = "332007906dc" //密钥密码
-    ALIAS = "testdemo" //密钥别名
-    ALIAS_PASSWORD = "332007906dc" //别名密码
-    OUTPUT_PATH = "app/build/outputs/release/" //加固后所有apk的保存路径
-    CHANNEL_CONFIG = BASE + "channel/"//保存渠道配置
+    reforce_output_path = "../app/build/outputs/apk/release"
 }
 
 class ApkFile {
     String channel
     File file
+}
+
+task reinforceTest{
+    group "jiaGuApk"
+    logger.error("${new File("app/build/outputs").directory}")
 }
 
 /**
@@ -32,30 +28,33 @@ task reinforceRelease {
         if (apkFiles.size() == 0) {
             throw new RuntimeException("no apk files has found!")
         }
-        File outputDir = new File(OUTPUT_PATH)
+        File outputDir = new File("../${reforce_output_path}")
         if (outputDir.exists()) {
             if (!outputDir.delete()) {
-                throw new RuntimeException("delete outputDir failure!")
+                throw new RuntimeException("delete ${outputDir.path} failure!")
             }
         }
         if (!outputDir.mkdirs()) {
             throw new RuntimeException("make outputDir failure!")
         }
+        System.out.println(" ")
+        System.out.println("reinforce gradle --> start excute reinforce code .......")
         for (int i = 0; i < apkFiles.size(); i++) {
             ApkFile apkFile = apkFiles.get(i)
-            def cmdLogin = "java/bin/java -jar " + JAR + " -login" + " " + NAME + " " + PASSWORD
+            def cmdLogin = "reinforce/java/bin/java -jar reinforce/jiagu.jar -login dingchao823@163.com 332007906DC"
             execute360JiaGuCmd(cmdLogin)
-            def cmdSign = "java/bin/java -jar " + JAR + " -importsign " + KEY_PATH + " " + KEY_PASSWORD + " " + ALIAS + " " + ALIAS_PASSWORD
+            def cmdSign = "reinforce/java/bin/java -jar reinforce/jiagu.jar -importsign keystore/testdemo.keystore 332007906dc testdemo 332007906dc"
             execute360JiaGuCmd(cmdSign)
-            def showSign = "java/bin/java -jar " + JAR + " -showsign"
+            def showSign = "reinforce/java/bin/java -jar reinforce/jiagu.jar -showsign"
             execute360JiaGuCmd(showSign)
-            def channelSign = "java/bin/java -jar " + JAR + " -importmulpkg " + CHANNEL_CONFIG + "channel" + ".txt"
+            def channelSign = "reinforce/java/bin/java -jar reinforce/jiagu.jar -importmulpkg reinforce/channel/channel.txt"
             execute360JiaGuCmd(channelSign)
-            def cmdJiaGu = "java/bin/java -jar " + JAR + " -jiagu " + apkFile.file.getAbsolutePath() + " " + "app/build/outputs/apk/release/" + " -autosign -automulpkg"
+            def cmdJiaGu = "reinforce/java/bin/java -jar reinforce/jiagu.jar -jiagu app/build/outputs/apk/release/app-release.apk ${reforce_output_path} -autosign -automulpkg"
             execute360JiaGuCmd(cmdJiaGu)
         }
-
-        File apkDir = new File("app/build/outputs/apk/release/")
+        System.out.println("reinforce gradle --> end excute reinforce code .......")
+        System.out.println(" ")
+        File apkDir = new File("../app/build/outputs/apk/release/")
         filterApk(apkDir)
         renameApk(apkDir)
     }
@@ -68,7 +67,6 @@ task reinforceRelease {
 
     task cleanOutputsDir {
         def outputsPath = getBuildDir().getAbsolutePath() + File.separator + "outputs" + File.separator
-        logger.error(("reinforce gradle --> ${outputsPath}"))
         new File(outputsPath).deleteDir()
     }
 
@@ -159,8 +157,11 @@ def renameApk(File outputDir) {
 
 
 def execute360JiaGuCmd(cmd) {
-    def p = cmd.execute(null, new File("reinforce/"))
-    println p.text
+    // 在 TestDemo 下执行执行
+    def p = cmd.execute(null, new File("reinforce").parentFile)
+    System.out.println("reinforce gradle --> excute cmd [" + cmd + "]")
+    System.out.println("reinforce gradle --> ${p.text}")
     p.waitFor()  // 用以等待外部进程调用结束
-    println p.exitValue()
+    System.out.println("reinforce gradle --> excute end with code " + p.exitValue())
+    System.out.println(" ")
 }
