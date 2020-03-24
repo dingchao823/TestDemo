@@ -25,6 +25,7 @@ class EntranceActivity : Activity(){
     }
 
     private fun initData() {
+        adapter.dataSource.add(RecyclerBean("转场动画试验", Path.ACTIVITY_ANIMATION_TEST))
         adapter.dataSource.add(RecyclerBean("注解", Path.ANNOTATION_ACTIVITY_PATH))
         adapter.dataSource.add(RecyclerBean("kotlin 协程", Path.COROUTINES_SCOPE_ACTIVITY_PATH))
         adapter.dataSource.add(RecyclerBean("仿淘宝二楼", Path.SECOND_FLOOR_ACTIVITY))

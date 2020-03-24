@@ -30,6 +30,7 @@ class Path{
         const val STRING_SOME_THING_ACTIVITY = "/app/main/StringSomethingActivity"
         const val CLICK_TEST_ACTIVITY = "/app/main/ClickTestActivity"
         const val RECYLER_VIEW_LOAD_MORE_ACTIVITY = "/app/main/RecyclerLoadMoreActivity"
+        const val ACTIVITY_ANIMATION_TEST = "/app/main/RecyclerLoadMoreActivity"
     }
 
     object JetPackPath{
